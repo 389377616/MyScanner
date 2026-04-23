@@ -1,4 +1,4 @@
-name: 自动编译扫描器
+name: 自动编译并发布扫描器
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_ios:
-    name: 运行苹果云端打包
+    name: 运行苹果云端打包与发布
     runs-on: macos-latest
     
     steps:
@@ -17,20 +17,20 @@ jobs:
       - name: 2. 设置环境
         run: sudo xcode-select -s /Applications/Xcode.app
 
-      - name: 3. 自动更新版本号 (关键步骤)
+      - name: 3. 自动更新版本号并导出变量
         run: |
-          # 获取 GitHub 的运行次数 (从 1 开始)
+          # 获取 GitHub 的运行次数
           RUN_COUNT=${{ github.run_number }}
-          
-          # 计算小版本号 (如果你想第一次是 1.0，则需要减 1)
           MINOR_VERSION=$(( $RUN_COUNT - 1 ))
           FULL_VERSION="1.$MINOR_VERSION"
           
-          echo "本次打包版本号设定为: $FULL_VERSION (Build: $RUN_COUNT)"
+          # 将版本号存入环境变量，供后续步骤使用
+          echo "APP_VERSION=$FULL_VERSION" >> $GITHUB_ENV
+          echo "BUILD_NUMBER=$RUN_COUNT" >> $GITHUB_ENV
           
-          # 使用 PlistBuddy 修改根目录下的 Info.plist
-          # CFBundleShortVersionString 对应“软件版本号” (如 1.0)
-          # CFBundleVersion 对应“构建版本号” (如 1, 2, 3)
+          echo "准备打包版本: $FULL_VERSION (Build: $RUN_COUNT)"
+          
+          # 修改 Info.plist
           /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $FULL_VERSION" Info.plist
           /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $RUN_COUNT" Info.plist
 
@@ -49,9 +49,31 @@ jobs:
           cp -r Build/MyScanner.xcarchive/Products/Applications/*.app Payload/
           zip -r MyScanner.ipa Payload
 
-      - name: 6. 上传产物
+      - name: 6. 上传工作流产物 (Artifacts)
         uses: actions/upload-artifact@v4
         with:
-          name: 我的扫描器-V1.${{ github.run_number }}
+          name: MyScanner-V${{ env.APP_VERSION }}
           path: MyScanner.ipa
           retention-days: 7
+
+      - name: 7. 发布到 GitHub Releases
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: v${{ env.APP_VERSION }}
+          name: "MyScanner V${{ env.APP_VERSION }} (Build ${{ env.BUILD_NUMBER }})"
+          files: MyScanner.ipa
+          body: |
+            ## 🚀 更新内容
+            ${{ github.event.head_commit.message }}
+            
+            ---
+            - **版本号**: ${{ env.APP_VERSION }}
+            - **构建编号**: ${{ env.BUILD_NUMBER }}
+            - **构建时间**: ${{ github.event.head_commit.timestamp }}
+            
+            *此版本由 GitHub Actions 自动编译生成，支持自签安装。*
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
