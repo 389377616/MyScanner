@@ -7,1347 +7,176 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9CCABC6E /* PageDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7593CB9 /* PageDirection.swift */; };
-		8A3C33F8 /* TextPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A4DF00 /* TextPos.swift */; };
-		BF823BC2 /* BaseColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3CE9A4 /* BaseColumn.swift */; };
-		901B6C21 /* TextColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F800AA /* TextColumn.swift */; };
-		A3856215 /* ImageColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C977CA4 /* ImageColumn.swift */; };
-		A11EC7BA /* TextLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B326822F /* TextLine.swift */; };
-		ABB07787 /* TextPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E4F46A /* TextPage.swift */; };
-		A4AA0EE0 /* TextChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE2E3C /* TextChapter.swift */; };
-		8CA3A324 /* ContentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5CDDCF /* ContentTextView.swift */; };
-		AC2612A5 /* ChapterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983E8F21 /* ChapterProvider.swift */; };
-		910C4BCD /* TextChapterLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13C263 /* TextChapterLayout.swift */; };
-		8519857C /* TextPageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8569919F /* TextPageFactory.swift */; };
-		9F865F37 /* ReadBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF737BB /* ReadBook.swift */; };
-		A1B2C3D4 /* ReadBookConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F6A7B8 /* ReadBookConfig.swift */; };
-		8F40273B /* PageDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFC2498 /* PageDirection.swift */; };
-		801672A7 /* TextPos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC516F /* TextPos.swift */; };
-		957EA2BA /* BaseColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DC1970 /* BaseColumn.swift */; };
-		ACD705C8 /* TextColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8638A62F /* TextColumn.swift */; };
-		8C2FFEFC /* ImageColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB33B14 /* ImageColumn.swift */; };
-		BC35B8E3 /* TextLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887F2A29 /* TextLine.swift */; };
-		8EBB34D2 /* TextPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC9EAD0 /* TextPage.swift */; };
-		AB1FD768 /* TextChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898188E /* TextChapter.swift */; };
-		A5BC7534 /* ContentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9978E827 /* ContentTextView.swift */; };
-		B19F8D8A /* GroupManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50AE20C /* GroupManageView.swift */; };
-		88CE479F /* GroupManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B5B3B9 /* GroupManageView.swift */; };
-		1A00000000000001 /* LegadoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000001 /* LegadoApp.swift */; };
-		1A000000000000A1 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000A1 /* WelcomeView.swift */; };
-		1A000000000000A2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000A2 /* Router.swift */; };
-		1A000000000000A3 /* CookieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000A3 /* CookieManager.swift */; };
-		1A000000000000A5 /* HTTPClient+Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000A5 /* HTTPClient+Retry.swift */; };
-		1A000000000000A7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000A7 /* Logger.swift */; };
-		1A00000000000110 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000110 /* StringUtils.swift */; };
-		1A00000000000111 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000111 /* NetworkUtils.swift */; };
-		1A00000000000112 /* MD5Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000112 /* MD5Utils.swift */; };
-		1A00000000000113 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000113 /* FileUtils.swift */; };
-		1A00000000000114 /* BitmapUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000114 /* BitmapUtils.swift */; };
-		1A00000000000115 /* ScreenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000115 /* ScreenUtils.swift */; };
-		1A00000000000116 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000116 /* TimeUtils.swift */; };
-		1A00000000000117 /* IOUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000117 /* IOUtils.swift */; };
-		1A00000000000118 /* GSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000118 /* GSONUtils.swift */; };
-		1A00000000000119 /* NumberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000119 /* NumberUtils.swift */; };
-		1A00000000000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A10000000000003 /* Assets.xcassets */; };
-		1A00000000000004 /* Legado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000004 /* Legado.xcdatamodeld */; };
-		
-		// Core
-		1A00000000000010 /* Book+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000010 /* Book+CoreDataClass.swift */; };
-		1A00000000000011 /* BookSource+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000011 /* BookSource+CoreDataClass.swift */; };
-		1A00000000000012 /* BookChapter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000012 /* BookChapter+CoreDataClass.swift */; };
-		1A00000000000013 /* Bookmark+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000013 /* Bookmark+CoreDataClass.swift */; };
-		1A00000000000014 /* ReadConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000014 /* ReadConfig.swift */; };
-		1A00000000000015 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000015 /* CoreDataStack.swift */; };
-		1A00000000000016 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000016 /* HTTPClient.swift */; };
-		1A00000000000017 /* RuleEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000017 /* RuleEngine.swift */; };
-		1A00000000000018 /* ReplaceEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000018 /* ReplaceEngine.swift */; };
-		1A00000000000019 /* RuleSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000019 /* RuleSplitter.swift */; };
-		1A00000000000090 /* TocRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000090 /* TocRule.swift */; };
-		1A00000000000091 /* TocParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000091 /* TocParser.swift */; };
-		1A00000000000094 /* SourceRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000094 /* SourceRule.swift */; };
-		1A00000000000095 /* RuleAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000095 /* RuleAnalyzer.swift */; };
-		
-		// Features
-		1A00000000000020 /* BookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000020 /* BookshelfView.swift */; };
-		1A00000000000021 /* BookshelfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000021 /* BookshelfViewModel.swift */; };
-		1A00000000000022 /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000022 /* ReaderView.swift */; };
-		1A00000000000023 /* ReaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000023 /* ReaderViewModel.swift */; };
-		1A00000000000024 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000024 /* SearchView.swift */; };
-		1A00000000000025 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000025 /* SearchViewModel.swift */; };
-		1A00000000000026 /* SourceManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000026 /* SourceManageView.swift */; };
-		1A00000000000027 /* SourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000027 /* SourceViewModel.swift */; };
-		1A00000000000028 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000028 /* SettingsView.swift */; };
-		1A00000000000029 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000029 /* BookDetailView.swift */; };
-		1A00000000000030 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000030 /* MainTabView.swift */; };
-		1A00000000000032 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000032 /* AppConstants.swift */; };
-		1A00000000000033 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000033 /* ImageCacheManager.swift */; };
-		1A00000000000034 /* EPUBParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000034 /* EPUBParser.swift */; };
-		1A000000000000E0 /* HTMLToTextConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000E0 /* HTMLToTextConverter.swift */; };
-		1A000000000000E1 /* TxtTocRuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000E1 /* TxtTocRuleView.swift */; };
-		1A000000000000E2 /* FileManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000E2 /* FileManageView.swift */; };
-		1A00000000000036 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000036 /* AddBookView.swift */; };
-		1A00000000000037 /* LocalBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000037 /* LocalBookViewModel.swift */; };
-		1A000000000000E3 /* LocalBookScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000E3 /* LocalBookScanner.swift */; };
-		1A00000000000038 /* BackupRestoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000038 /* BackupRestoreView.swift */; };
-		1A000000000000E4 /* GroupManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000E4 /* GroupManageView.swift */; };
-		1A000000000000F5 /* RuleBasedRSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F5 /* RuleBasedRSSParser.swift */; };
-		1A000000000000F6 /* RSSRefreshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F6 /* RSSRefreshManager.swift */; };
-		1A000000000000F7 /* RSSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F7 /* RSSViewModel.swift */; };
-		1A00000000000039 /* ReaderSettingsFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000039 /* ReaderSettingsFullView.swift */; };
-		1A0000000000003A /* ReplaceRuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000003A /* ReplaceRuleView.swift */; };
-		1A0000000000003B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC0000000000001 /* SwiftSoup */; };
-		1A0000000000003C /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC0000000000002 /* Kanna */; };
-		1A0000000000003D /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1AC0000000000003 /* ZIPFoundation */; };
-		1A00000000000040 /* AnalyzeUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000040 /* AnalyzeUrl.swift */; };
-		1A00000000000041 /* WebBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000041 /* WebBook.swift */; };
-		1A00000000000042 /* RSSSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000042 /* RSSSubscriptionView.swift */; };
-		1A00000000000043 /* QRCodeScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000043 /* QRCodeScanView.swift */; };
-		1A00000000000044 /* DictRuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000044 /* DictRuleView.swift */; };
-		1A00000000000045 /* ReplaceRule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000045 /* ReplaceRule+CoreDataClass.swift */; };
-		1A00000000000046 /* ReplaceRuleDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000046 /* ReplaceRuleDebugView.swift */; };
-		1A00000000000047 /* TemplateEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000047 /* TemplateEngine.swift */; };
-		1A00000000000048 /* JSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000048 /* JSBridge.swift */; };
-		1A00000000000049 /* SourceEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000049 /* SourceEditView.swift */; };
-		1A0000000000004A /* SourceEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000004A /* SourceEditViewModel.swift */; };
-		1A0000000000004B /* RuleFieldEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000004B /* RuleFieldEditor.swift */; };
-		1A0000000000004C /* BasicInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000004C /* BasicInfoSection.swift */; };
-		1A0000000000004D /* SearchRuleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000004D /* SearchRuleSection.swift */; };
-		1A0000000000004E /* ExploreRuleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000004E /* ExploreRuleSection.swift */; };
-		1A0000000000004F /* BookInfoRuleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000004F /* BookInfoRuleSection.swift */; };
-		1A00000000000050 /* TocRuleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000050 /* TocRuleSection.swift */; };
-		1A00000000000051 /* ContentRuleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000051 /* ContentRuleSection.swift */; };
-		1A00000000000052 /* WebDAVCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000052 /* WebDAVCredentials.swift */; };
-		1A00000000000053 /* WebDAVFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000053 /* WebDAVFile.swift */; };
-		1A00000000000054 /* BackupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000054 /* BackupInfo.swift */; };
-		1A00000000000055 /* WebDAVClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000055 /* WebDAVClient.swift */; };
-		1A00000000000056 /* WebDAVSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000056 /* WebDAVSyncManager.swift */; };
-		1A00000000000057 /* WebDAVConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000057 /* WebDAVConfigView.swift */; };
-		1A00000000000058 /* PagedReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000058 /* PagedReaderView.swift */; };
-		1A00000000000059 /* PageSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000059 /* PageSplitter.swift */; };
-		1A00000000000097 /* HTMLContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000096 /* HTMLContentView.swift */; };
-		1A0000000000005A /* CoverPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000098 /* CoverPageView.swift */; };
-		1A0000000000005B /* SlidePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000005B /* SlidePageView.swift */; };
-		1A0000000000005C /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000005C /* DiscoveryView.swift */; };
-		1A0000000000005D /* ReadingStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000005D /* ReadingStatisticsView.swift */; };
-		1A0000000000005E /* ReadingStatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000005E /* ReadingStatisticsManager.swift */; };
-		1A0000000000005F /* SourceDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000005F /* SourceDebugView.swift */; };
-		1A00000000000060 /* SourceDebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000060 /* SourceDebugViewModel.swift */; };
-		1A00000000000061 /* RuleDebugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000061 /* RuleDebugger.swift */; };
-		1A00000000000062 /* TTSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000062 /* TTSManager.swift */; };
-		1A00000000000063 /* TTSControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000063 /* TTSControlsView.swift */; };
-		1A00000000000093 /* HttpTTSPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000093 /* HttpTTSPlaybackManager.swift */; };
-		1A00000000000064 /* CurlPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000064 /* CurlPageView.swift */; };
-		1A00000000000065 /* AutoPageTurnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000065 /* AutoPageTurnManager.swift */; };
-		1A00000000000066 /* AutoPageTurnControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000066 /* AutoPageTurnControlsView.swift */; };
-		1A00000000000067 /* ReadingEnhancementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000067 /* ReadingEnhancementManager.swift */; };
-		1A00000000000068 /* FullTextFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000068 /* FullTextFetcher.swift */; };
-		1A00000000000069 /* SourceSubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000069 /* SourceSubscriptionManager.swift */; };
-		1A0000000000006A /* DataMigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000006A /* DataMigrationManager.swift */; };
-		1A0000000000006B /* SearchOptimizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000006B /* SearchOptimizer.swift */; };
-		1A0000000000006C /* ReplaceEngineEnhanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000006C /* ReplaceEngineEnhanced.swift */; };
-		1A0000000000006D /* EPUBReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000006D /* EPUBReaderView.swift */; };
-		1A00000000000070 /* BookGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000070 /* BookGroup+CoreDataClass.swift */; };
-		1A00000000000071 /* SearchBook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000071 /* SearchBook+CoreDataClass.swift */; };
-		1A00000000000072 /* SearchKeyword+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000072 /* SearchKeyword+CoreDataClass.swift */; };
-		1A00000000000073 /* RssSource+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000073 /* RssSource+CoreDataClass.swift */; };
-		1A00000000000074 /* RssArticle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000074 /* RssArticle+CoreDataClass.swift */; };
-		1A00000000000075 /* RssReadRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000075 /* RssReadRecord+CoreDataClass.swift */; };
-		1A00000000000076 /* RssStar+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000076 /* RssStar+CoreDataClass.swift */; };
-		1A00000000000077 /* CacheEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000077 /* CacheEntry+CoreDataClass.swift */; };
-		1A00000000000078 /* Cookie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000078 /* Cookie+CoreDataClass.swift */; };
-		1A00000000000079 /* ReadRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000079 /* ReadRecord+CoreDataClass.swift */; };
-		1A0000000000007A /* BookProgress+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000007A /* BookProgress+CoreDataClass.swift */; };
-		1A0000000000007B /* HttpTTS+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000007B /* HttpTTS+CoreDataClass.swift */; };
-		1A0000000000007C /* DictRule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000007C /* DictRule+CoreDataClass.swift */; };
-		1A0000000000007D /* RuleSub+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000007D /* RuleSub+CoreDataClass.swift */; };
-		1A0000000000007E /* TxtTocRule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000007E /* TxtTocRule+CoreDataClass.swift */; };
-		1A0000000000007F /* BookDeduplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000007F /* BookDeduplicator.swift */; };
-		1A00000000000080 /* TableOfContentsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000080 /* TableOfContentsParser.swift */; };
-		1A00000000000081 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000081 /* ContentView.swift */; };
-		1A00000000000082 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000082 /* Chapter.swift */; };
-		1A00000000000083 /* ChangeSourceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000083 /* ChangeSourceSheet.swift */; };
-		1A00000000000084 /* BookmarkSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000084 /* BookmarkSheet.swift */; };
-		1A00000000000085 /* ChapterCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000085 /* ChapterCacheManager.swift */; };
-		1A00000000000086 /* UTType+EPUB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000086 /* UTType+EPUB.swift */; };
-1A00000000000087 /* DocumentPickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000087 /* DocumentPickerHelper.swift */; };
-		1A00000000000088 /* URLSchemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000088 /* URLSchemeHandler.swift */; };
-		1A00000000000089 /* URLConfirmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000089 /* URLConfirmHelper.swift */; };
-		1A0000000000008A /* VerificationWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000008A /* VerificationWebView.swift */; };
-		1A0000000000008B /* RemoteBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000008B /* RemoteBookView.swift */; };
-		1A0000000000008C /* BackgroundCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000008C /* BackgroundCacheService.swift */; };
-1A0000000000008D /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000008D /* IntegrationTests.swift */; };
-		1A0000000000008E /* DebugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000008E /* DebugLogger.swift */; };
-		1A0000000000008F /* HttpTTSConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1000000000008F /* HttpTTSConfigView.swift */; };
-		1A000000000000F0 /* WebServerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F0 /* WebServerCoordinator.swift */; };
-		1A000000000000F1 /* HTTPRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F1 /* HTTPRequestHandler.swift */; };
-		1A000000000000F2 /* WebServerDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F2 /* WebServerDataProvider.swift */; };
-		1A000000000000F3 /* RuleBasedRSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F3 /* RuleBasedRSSParser.swift */; };
-		1A000000000000F4 /* RSSRefreshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F4 /* RSSRefreshManager.swift */; };
-		1A000000000000F5 /* RSSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F5 /* RSSViewModel.swift */; };
-		1A000000000000F6 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F6 /* ImageProvider.swift */; };
-		1A000000000000F7 /* BookHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F7 /* BookHelp.swift */; };
-		1A000000000000F8 /* ContentProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F8 /* ContentProcessor.swift */; };
-		1A000000000000F9 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000F9 /* MyView.swift */; };
-		1A000000000000FA /* OnLineImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000FA /* OnLineImportView.swift */; };
-		1A000000000000FB /* SourceExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000FB /* SourceExportView.swift */; };
-		1A000000000000FD /* RssSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000FD /* RssSortView.swift */; };
-		1A000000000000FE /* RssFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A100000000000FE /* RssFavoritesView.swift */; };
-		1A00000000000100 /* CoverConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A10000000000100 /* CoverConfigView.swift */; };
+		00E100022B5F000100000000 /* MyScannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E100012B5F000100000000 /* MyScannerApp.swift */; };
+		00E100042B5F000200000000 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E100032B5F000200000000 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A7593CB9 /* PageDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDirection.swift; sourceTree = "<group>"; };
-		A9A4DF00 /* TextPos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPos.swift; sourceTree = "<group>"; };
-		9F3CE9A4 /* BaseColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseColumn.swift; sourceTree = "<group>"; };
-		B9F800AA /* TextColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColumn.swift; sourceTree = "<group>"; };
-		9C977CA4 /* ImageColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageColumn.swift; sourceTree = "<group>"; };
-		B326822F /* TextLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLine.swift; sourceTree = "<group>"; };
-		A4E4F46A /* TextPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPage.swift; sourceTree = "<group>"; };
-		B9DE2E3C /* TextChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextChapter.swift; sourceTree = "<group>"; };
-		BC5CDDCF /* ContentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTextView.swift; sourceTree = "<group>"; };
-		983E8F21 /* ChapterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterProvider.swift; sourceTree = "<group>"; };
-		AD13C263 /* TextChapterLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextChapterLayout.swift; sourceTree = "<group>"; };
-		8569919F /* TextPageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPageFactory.swift; sourceTree = "<group>"; };
-		BDF737BB /* ReadBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBook.swift; sourceTree = "<group>"; };
-		8DFC2498 /* PageDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDirection.swift; sourceTree = "<group>"; };
-		8BCC516F /* TextPos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPos.swift; sourceTree = "<group>"; };
-		A1DC1970 /* BaseColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseColumn.swift; sourceTree = "<group>"; };
-		8638A62F /* TextColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColumn.swift; sourceTree = "<group>"; };
-		BAB33B14 /* ImageColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageColumn.swift; sourceTree = "<group>"; };
-		887F2A29 /* TextLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLine.swift; sourceTree = "<group>"; };
-		BFC9EAD0 /* TextPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPage.swift; sourceTree = "<group>"; };
-		8898188E /* TextChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextChapter.swift; sourceTree = "<group>"; };
-		9978E827 /* ContentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTextView.swift; sourceTree = "<group>"; };
-		A50AE20C /* GroupManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManageView.swift; sourceTree = "<group>"; };
-		91B5B3B9 /* GroupManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupManageView.swift; sourceTree = "<group>"; };
-		1A10000000000001 /* LegadoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegadoApp.swift; sourceTree = "<group>"; };
-
-		1A10000000000003 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1A10000000000004 /* Legado.xcdatamodeld */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Legado.xcdatamodeld; sourceTree = "<group>"; };
-		1A10000000000005 /* Legado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Legado.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		
-		// Core
-		1A10000000000010 /* Book+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000011 /* BookSource+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookSource+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000012 /* BookChapter+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookChapter+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000013 /* Bookmark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookmark+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000014 /* ReadConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadConfig.swift; sourceTree = "<group>"; };
-		1A10000000000015 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		1A10000000000016 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		1A10000000000017 /* RuleEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleEngine.swift; sourceTree = "<group>"; };
-		1A10000000000018 /* ReplaceEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceEngine.swift; sourceTree = "<group>"; };
-		1A10000000000019 /* RuleSplitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleSplitter.swift; sourceTree = "<group>"; };
-		1A10000000000090 /* TocRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TocRule.swift; sourceTree = "<group>"; };
-		1A10000000000091 /* TocParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TocParser.swift; sourceTree = "<group>"; };
-1A10000000000094 /* SourceRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceRule.swift; sourceTree = "<group>"; };
-		1A10000000000095 /* RuleAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleAnalyzer.swift; sourceTree = "<group>"; };
-1A10000000000096 /* HTMLContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLContentView.swift; sourceTree = "<group>"; };
-		1A10000000000098 /* CoverPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverPageView.swift; sourceTree = "<group>"; };
-		1A100000000000F6 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
-		1A100000000000F7 /* BookHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHelp.swift; sourceTree = "<group>"; };
-		1A100000000000F8 /* ContentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProcessor.swift; sourceTree = "<group>"; };
-		
-		// Features
-		1A10000000000020 /* BookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfView.swift; sourceTree = "<group>"; };
-		1A10000000000021 /* BookshelfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfViewModel.swift; sourceTree = "<group>"; };
-		1A10000000000022 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
-		1A10000000000023 /* ReaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewModel.swift; sourceTree = "<group>"; };
-		1A10000000000024 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		1A10000000000025 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		1A10000000000026 /* SourceManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceManageView.swift; sourceTree = "<group>"; };
-		1A10000000000027 /* SourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewModel.swift; sourceTree = "<group>"; };
-		1A10000000000028 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		1A10000000000029 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
-		1A10000000000030 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		1A10000000000032 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		1A10000000000033 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
-		1A10000000000034 /* EPUBParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPUBParser.swift; sourceTree = "<group>"; };
-		1A100000000000E0 /* HTMLToTextConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLToTextConverter.swift; sourceTree = "<group>"; };
-		1A100000000000E1 /* TxtTocRuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxtTocRuleView.swift; sourceTree = "<group>"; };
-		1A100000000000E2 /* FileManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManageView.swift; sourceTree = "<group>"; };
-		1A10000000000036 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
-		1A10000000000037 /* LocalBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBookViewModel.swift; sourceTree = "<group>"; };
-		1A100000000000E3 /* LocalBookScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Local/LocalBookScanner.swift"; sourceTree = "<group>"; };
-		1A10000000000038 /* BackupRestoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupRestoreView.swift; sourceTree = "<group>"; };
-		1A100000000000E4 /* GroupManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/Source/GroupManageView.swift"; sourceTree = "<group>"; };
-		1A100000000000F3 /* RuleBasedRSSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/RSS/RuleBasedRSSParser.swift"; sourceTree = "<group>"; };
-		1A100000000000F4 /* RSSRefreshManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/RSS/RSSRefreshManager.swift"; sourceTree = "<group>"; };
-		1A100000000000F5 /* RSSViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Features/RSS/RSSViewModel.swift"; sourceTree = "<group>"; };
-		1A10000000000039 /* ReaderSettingsFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderSettingsFullView.swift; sourceTree = "<group>"; };
-		1A1000000000003A /* ReplaceRuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceRuleView.swift; sourceTree = "<group>"; };
-		1A10000000000040 /* AnalyzeUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeUrl.swift; sourceTree = "<group>"; };
-		1A10000000000041 /* WebBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBook.swift; sourceTree = "<group>"; };
-		1A10000000000042 /* RSSSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSSubscriptionView.swift; sourceTree = "<group>"; };
-		1A10000000000043 /* QRCodeScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanView.swift; sourceTree = "<group>"; };
-		1A10000000000044 /* DictRuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictRuleView.swift; sourceTree = "<group>"; };
-		1A10000000000045 /* ReplaceRule+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReplaceRule+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000046 /* ReplaceRuleDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceRuleDebugView.swift; sourceTree = "<group>"; };
-		1A10000000000047 /* TemplateEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEngine.swift; sourceTree = "<group>"; };
-		1A10000000000048 /* JSBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSBridge.swift; sourceTree = "<group>"; };
-		1A10000000000049 /* SourceEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditView.swift; sourceTree = "<group>"; };
-		1A1000000000004A /* SourceEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditViewModel.swift; sourceTree = "<group>"; };
-		1A1000000000004B /* RuleFieldEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleFieldEditor.swift; sourceTree = "<group>"; };
-		1A1000000000004C /* BasicInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoSection.swift; sourceTree = "<group>"; };
-		1A1000000000004D /* SearchRuleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRuleSection.swift; sourceTree = "<group>"; };
-		1A1000000000004E /* ExploreRuleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreRuleSection.swift; sourceTree = "<group>"; };
-		1A1000000000004F /* BookInfoRuleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoRuleSection.swift; sourceTree = "<group>"; };
-		1A10000000000050 /* TocRuleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TocRuleSection.swift; sourceTree = "<group>"; };
-		1A10000000000051 /* ContentRuleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRuleSection.swift; sourceTree = "<group>"; };
-		1A10000000000052 /* WebDAVCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVCredentials.swift; sourceTree = "<group>"; };
-		1A10000000000053 /* WebDAVFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVFile.swift; sourceTree = "<group>"; };
-		1A10000000000054 /* BackupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupInfo.swift; sourceTree = "<group>"; };
-		1A10000000000055 /* WebDAVClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVClient.swift; sourceTree = "<group>"; };
-		1A10000000000056 /* WebDAVSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVSyncManager.swift; sourceTree = "<group>"; };
-		1A10000000000057 /* WebDAVConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDAVConfigView.swift; sourceTree = "<group>"; };
-1A10000000000058 /* PagedReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedReaderView.swift; sourceTree = "<group>"; };
-		1A10000000000059 /* PageSplitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSplitter.swift; sourceTree = "<group>"; };
-		1A10000000000068 /* FullTextFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTextFetcher.swift; sourceTree = "<group>"; };
-		1A1000000000005B /* SlidePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidePageView.swift; sourceTree = "<group>"; };
-		1A1000000000005C /* DiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Discovery/DiscoveryView.swift"; sourceTree = "<group>"; };
-		1A1000000000005D /* ReadingStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistics/ReadingStatisticsView.swift"; sourceTree = "<group>"; };
-		1A1000000000005E /* ReadingStatisticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Statistics/ReadingStatisticsManager.swift"; sourceTree = SOURCE_ROOT; };
-		1A1000000000005F /* SourceDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDebugView.swift; sourceTree = "<group>"; };
-		1A10000000000060 /* SourceDebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDebugViewModel.swift; sourceTree = "<group>"; };
-		1A10000000000061 /* RuleDebugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleDebugger.swift; sourceTree = "<group>"; };
-		1A10000000000062 /* TTSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/TTS/TTSManager.swift"; sourceTree = SOURCE_ROOT; };
-		1A10000000000063 /* TTSControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSControlsView.swift; sourceTree = "<group>"; };
-		1A10000000000093 /* HttpTTSPlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/TTS/HttpTTSPlaybackManager.swift"; sourceTree = SOURCE_ROOT; };
-		1A10000000000064 /* CurlPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurlPageView.swift; sourceTree = "<group>"; };
-		1A10000000000065 /* AutoPageTurnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoPageTurnManager.swift; sourceTree = "<group>"; };
-		1A10000000000066 /* AutoPageTurnControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoPageTurnControlsView.swift; sourceTree = "<group>"; };
-		1A10000000000067 /* ReadingEnhancementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingEnhancementManager.swift; sourceTree = "<group>"; };
-		1A10000000000069 /* SourceSubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Source/SourceSubscriptionManager.swift"; sourceTree = "<group>"; };
-		1A1000000000006A /* DataMigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Migration/DataMigrationManager.swift"; sourceTree = "<group>"; };
-		1A1000000000006B /* SearchOptimizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/Search/SearchOptimizer.swift"; sourceTree = "<group>"; };
-		1A1000000000006C /* ReplaceEngineEnhanced.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Core/RuleEngine/ReplaceEngineEnhanced.swift"; sourceTree = "<group>"; };
-		1A10000000000070 /* BookGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000071 /* SearchBook+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchBook+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000072 /* SearchKeyword+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchKeyword+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000073 /* RssSource+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RssSource+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000074 /* RssArticle+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RssArticle+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000075 /* RssReadRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RssReadRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000076 /* RssStar+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RssStar+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000077 /* CacheEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CacheEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000078 /* Cookie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cookie+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A10000000000079 /* ReadRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReadRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A1000000000007A /* BookProgress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookProgress+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A1000000000007B /* HttpTTS+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HttpTTS+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A1000000000007C /* DictRule+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DictRule+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A1000000000007D /* RuleSub+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RuleSub+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A1000000000007E /* TxtTocRule+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TxtTocRule+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1A1000000000007F /* BookDeduplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDeduplicator.swift"; sourceTree = "<group>"; };
-		1A10000000000080 /* TableOfContentsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableOfContentsParser.swift"; sourceTree = "<group>"; };
-		1A10000000000081 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView.swift"; sourceTree = "<group>"; };
-		1A10000000000082 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter.swift"; sourceTree = "<group>"; };
-		1A10000000000083 /* ChangeSourceSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSourceSheet.swift; sourceTree = "<group>"; };
-		1A10000000000084 /* BookmarkSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkSheet.swift; sourceTree = "<group>"; };
-		1A10000000000085 /* ChapterCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCacheManager.swift; sourceTree = "<group>"; };
-		1A10000000000086 /* UTType+EPUB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+EPUB.swift"; sourceTree = "<group>"; };
-1A10000000000087 /* DocumentPickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerHelper.swift; sourceTree = "<group>"; };
-		1A10000000000088 /* URLSchemeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemeHandler.swift; sourceTree = "<group>"; };
-		1A10000000000089 /* URLConfirmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfirmHelper.swift; sourceTree = "<group>"; };
-		1A1000000000008A /* VerificationWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationWebView.swift; sourceTree = "<group>"; };
-		1A1000000000008B /* RemoteBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBookView.swift; sourceTree = "<group>"; };
-		1A1000000000008C /* BackgroundCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCacheService.swift; sourceTree = "<group>"; };
-1A1000000000008D /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
-		1A1000000000008E /* DebugLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLogger.swift; sourceTree = "<group>"; };
-		1A1000000000008F /* HttpTTSConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpTTSConfigView.swift; sourceTree = "<group>"; };
-		1A100000000000F0 /* WebServerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServerCoordinator.swift; sourceTree = "<group>"; };
-		1A100000000000F1 /* HTTPRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestHandler.swift; sourceTree = "<group>"; };
-		1A100000000000F2 /* WebServerDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServerDataProvider.swift; sourceTree = "<group>"; };
-		1A100000000000F3 /* RuleBasedRSSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleBasedRSSParser.swift; sourceTree = "<group>"; };
-		1A100000000000F4 /* RSSRefreshManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSRefreshManager.swift; sourceTree = "<group>"; };
-		1A100000000000F5 /* RSSViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSViewModel.swift; sourceTree = "<group>"; };
-		1A100000000000F9 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
-		1A100000000000FA /* OnLineImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnLineImportView.swift; sourceTree = "<group>"; };
-		1A100000000000FB /* SourceExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceExportView.swift; sourceTree = "<group>"; };
-		1A100000000000FD /* RssSortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssSortView.swift; sourceTree = "<group>"; };
-		1A100000000000FE /* RssFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssFavoritesView.swift; sourceTree = "<group>"; };
-		1A10000000000100 /* CoverConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverConfigView.swift; sourceTree = "<group>"; };
-		E5F6A7B8 /* ReadBookConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBookConfig.swift; sourceTree = "<group>"; };
-		1A1000000000006D /* EPUBReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPUBReaderView.swift; sourceTree = "<group>"; };
-		1A100000000000A1 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		1A100000000000A2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		1A100000000000A3 /* CookieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieManager.swift; sourceTree = "<group>"; };
-		1A100000000000A5 /* HTTPClient+Retry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPClient+Retry.swift"; sourceTree = "<group>"; };
-		1A100000000000A7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		1A10000000000110 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
-		1A10000000000111 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
-		1A10000000000112 /* MD5Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5Utils.swift; sourceTree = "<group>"; };
-		1A10000000000113 /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
-		1A10000000000114 /* BitmapUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmapUtils.swift; sourceTree = "<group>"; };
-		1A10000000000115 /* ScreenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtils.swift; sourceTree = "<group>"; };
-		1A10000000000116 /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
-		1A10000000000117 /* IOUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOUtils.swift; sourceTree = "<group>"; };
-		1A10000000000118 /* GSONUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSONUtils.swift; sourceTree = "<group>"; };
-		1A10000000000119 /* NumberUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberUtils.swift; sourceTree = "<group>"; };
+		00E100012B5F000100000000 /* MyScannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScannerApp.swift; sourceTree = "<group>"; };
+		00E100032B5F000200000000 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		00E100052B5F000300000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E100062B5F000400000000 /* MyScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		1A20000000000001 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1A0000000000003B /* SwiftSoup in Frameworks */,
-				1A0000000000003C /* Kanna in Frameworks */,
-				1A0000000000003D /* ZIPFoundation in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
-		1A30000000000001 = {
+		00E100002B5F000000000000 = {
 			isa = PBXGroup;
 			children = (
-				1A30000000000009 /* App */,
-				1A30000000000010 /* Core */,
-				1A30000000000020 /* Features */,
-				1A30000000000030 /* Resources */,
-				1A30000000000040 /* Products */,
+				00E100012B5F000100000000 /* MyScannerApp.swift */,
+				00E100032B5F000200000000 /* ContentView.swift */,
+				00E100052B5F000300000000 /* Info.plist */,
+				00E100072B5F000500000000 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1A30000000000009 /* App */ = {
+		00E100072B5F000500000000 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1A10000000000001 /* LegadoApp.swift */,
-				1A10000000000030 /* MainTabView.swift */,
-				1A100000000000A1 /* WelcomeView.swift */,
-
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		1A30000000000070 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				1A100000000000A2 /* Router.swift */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-	1A30000000000010 /* Core */ = {
-		isa = PBXGroup;
-		children = (
-			1A30000000000011 /* Persistence */,
-			1A30000000000014 /* Cache */,
-			1A30000000000015 /* Config */,
-			1A30000000000012 /* Network */,
-			1A30000000000018 /* Utils */,
-			1A30000000000065 /* WebServer */,
-			1A30000000000016 /* Parser */,
-			1A30000000000013 /* RuleEngine */,
-			1A30000000000060 /* Sync */,
-			1A30000000000017 /* Model */,
-			1A30000000000062 /* Import */,
-			1A30000000000064 /* TTS */,
-			1A30000000000066 /* Statistics */,
-			1A30000000000067 /* Reader */,
-			1A30000000000070 /* Navigation */,
-		);
-		path = Core;
-		sourceTree = "<group>";
-	};
-		1A30000000000018 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000110 /* StringUtils.swift */,
-				1A10000000000111 /* NetworkUtils.swift */,
-				1A10000000000112 /* MD5Utils.swift */,
-				1A10000000000113 /* FileUtils.swift */,
-				1A10000000000114 /* BitmapUtils.swift */,
-				1A10000000000115 /* ScreenUtils.swift */,
-				1A10000000000116 /* TimeUtils.swift */,
-				1A10000000000117 /* IOUtils.swift */,
-				1A10000000000118 /* GSONUtils.swift */,
-				1A10000000000119 /* NumberUtils.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		1A30000000000011 /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000004 /* Legado.xcdatamodeld */,
-				1A10000000000010 /* Book+CoreDataClass.swift */,
-				1A10000000000011 /* BookSource+CoreDataClass.swift */,
-				1A10000000000012 /* BookChapter+CoreDataClass.swift */,
-				1A10000000000013 /* Bookmark+CoreDataClass.swift */,
-				1A10000000000014 /* ReadConfig.swift */,
-				1A10000000000015 /* CoreDataStack.swift */,
-				1A10000000000045 /* ReplaceRule+CoreDataClass.swift */,
-				1A10000000000070 /* BookGroup+CoreDataClass.swift */,
-				1A10000000000071 /* SearchBook+CoreDataClass.swift */,
-				1A10000000000072 /* SearchKeyword+CoreDataClass.swift */,
-				1A10000000000073 /* RssSource+CoreDataClass.swift */,
-				1A10000000000074 /* RssArticle+CoreDataClass.swift */,
-				1A10000000000075 /* RssReadRecord+CoreDataClass.swift */,
-				1A10000000000076 /* RssStar+CoreDataClass.swift */,
-				1A10000000000077 /* CacheEntry+CoreDataClass.swift */,
-				1A10000000000078 /* Cookie+CoreDataClass.swift */,
-				1A10000000000079 /* ReadRecord+CoreDataClass.swift */,
-				1A1000000000007A /* BookProgress+CoreDataClass.swift */,
-				1A1000000000007B /* HttpTTS+CoreDataClass.swift */,
-				1A1000000000007C /* DictRule+CoreDataClass.swift */,
-				1A1000000000007D /* RuleSub+CoreDataClass.swift */,
-				1A1000000000007E /* TxtTocRule+CoreDataClass.swift */,
-				1A1000000000007F /* BookDeduplicator.swift */,
-			);
-			path = Persistence;
-			sourceTree = "<group>";
-		};
-1A30000000000014 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000033 /* ImageCacheManager.swift */,
-				1A10000000000085 /* ChapterCacheManager.swift */,
-				1A1000000000008C /* BackgroundCacheService.swift */,
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
-1A30000000000015 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000032 /* AppConstants.swift */,
-				1A10000000000086 /* UTType+EPUB.swift */,
-				1A10000000000087 /* DocumentPickerHelper.swift */,
-				1A10000000000089 /* URLConfirmHelper.swift */,
-				1A1000000000008E /* DebugLogger.swift */,
-				1A100000000000A7 /* Logger.swift */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		1A30000000000012 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000016 /* HTTPClient.swift */,
-				1A10000000000040 /* AnalyzeUrl.swift */,
-				1A10000000000068 /* FullTextFetcher.swift */,
-				1A100000000000A3 /* CookieManager.swift */,
-				1A100000000000A5 /* HTTPClient+Retry.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		1A30000000000065 /* WebServer */ = {
-			isa = PBXGroup;
-			children = (
-				1A100000000000F0 /* WebServerCoordinator.swift */,
-				1A100000000000F1 /* HTTPRequestHandler.swift */,
-				1A100000000000F2 /* WebServerDataProvider.swift */,
-			);
-			path = WebServer;
-			sourceTree = "<group>";
-		};
-		1A30000000000060 /* Sync */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000055 /* WebDAVClient.swift */,
-				1A10000000000056 /* WebDAVSyncManager.swift */,
-				1A10000000000057 /* WebDAVConfigView.swift */,
-				1A30000000000061 /* Models */,
-			);
-			path = Sync;
-			sourceTree = "<group>";
-		};
-1A30000000000061 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000052 /* WebDAVCredentials.swift */,
-				1A10000000000053 /* WebDAVFile.swift */,
-				1A10000000000054 /* BackupInfo.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		1A30000000000062 /* Import */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000088 /* URLSchemeHandler.swift */,
-			);
-			path = Import;
-			sourceTree = "<group>";
-		};
-		1A30000000000064 /* TTS */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000062 /* TTSManager.swift */,
-				1A10000000000093 /* HttpTTSPlaybackManager.swift */,
-			);
-			path = TTS;
-			sourceTree = "<group>";
-		};
-		1A30000000000066 /* Statistics */ = {
-			isa = PBXGroup;
-			children = (
-				1A1000000000005E /* ReadingStatisticsManager.swift */,
-			);
-			path = Statistics;
-			sourceTree = "<group>";
-		};
-		1A30000000000017 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000041 /* WebBook.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1A30000000000016 /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000034 /* EPUBParser.swift */,
-				1A10000000000080 /* TableOfContentsParser.swift */,
-				1A100000000000E0 /* HTMLToTextConverter.swift */,
-			);
-			path = Parser;
-			sourceTree = "<group>";
-		};
-		1A30000000000013 /* RuleEngine */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000017 /* RuleEngine.swift */,
-				1A10000000000018 /* ReplaceEngine.swift */,
-				1A10000000000019 /* RuleSplitter.swift */,
-				1A10000000000090 /* TocRule.swift */,
-				1A10000000000091 /* TocParser.swift */,
-				1A10000000000094 /* SourceRule.swift */,
-				1A10000000000095 /* RuleAnalyzer.swift */,
-				1A10000000000047 /* TemplateEngine.swift */,
-				1A10000000000048 /* JSBridge.swift */,
-				1A10000000000061 /* RuleDebugger.swift */,
-			);
-			path = RuleEngine;
-			sourceTree = "<group>";
-		};
-1A30000000000020 /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				1A30000000000021 /* Bookshelf */,
-				1A30000000000022 /* Reader */,
-				1A30000000000023 /* Search */,
-				1A30000000000024 /* Source */,
-				1A30000000000025 /* Config */,
-				1A30000000000027 /* Local */,
-				1A30000000000026 /* BookDetail */,
-				1A30000000000028 /* RSS */,
-				1A30000000000063 /* Remote */,
-				1A300000000000A5 /* My */,
-				1A1000000000005C /* DiscoveryView.swift */,
-				1A1000000000005D /* ReadingStatisticsView.swift */,
-			);
-			path = Features;
-			sourceTree = "<group>";
-		};
-		1A300000000000A5 /* My */ = {
-			isa = PBXGroup;
-			children = (
-				1A100000000000F9 /* MyView.swift */,
-			);
-			path = My;
-			sourceTree = "<group>";
-		};
-		1A30000000000021 /* Bookshelf */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000036 /* AddBookView.swift */,
-				1A10000000000020 /* BookshelfView.swift */,
-				1A10000000000021 /* BookshelfViewModel.swift */,
-			);
-			path = Bookshelf;
-			sourceTree = "<group>";
-		};
-		1A30000000000022 /* Reader */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000039 /* ReaderSettingsFullView.swift */,
-				1A10000000000022 /* ReaderView.swift */,
-				1A10000000000023 /* ReaderViewModel.swift */,
-				1A10000000000083 /* ChangeSourceSheet.swift */,
-				1A10000000000084 /* BookmarkSheet.swift */,
-				1A10000000000058 /* PagedReaderView.swift */,
-				1A10000000000059 /* PageSplitter.swift */,
-				1A10000000000096 /* HTMLContentView.swift */,
-				1A1000000000006D /* EPUBReaderView.swift */,
-				1A10000000000063 /* TTSControlsView.swift */,
-				1A10000000000065 /* AutoPageTurnManager.swift */,
-				1A10000000000066 /* AutoPageTurnControlsView.swift */,
-				1A10000000000067 /* ReadingEnhancementManager.swift */,
-				1A30000000000066 /* PageViews */,
-			);
-			path = Reader;
-			sourceTree = "<group>";
-		};
-		1A30000000000066 /* PageViews */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000098 /* CoverPageView.swift */,
-				1A1000000000005B /* SlidePageView.swift */,
-				1A10000000000064 /* CurlPageView.swift */,
-			);
-			path = PageViews;
-			sourceTree = "<group>";
-		};
-		1A30000000000023 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000035 /* SearchResultView.swift */,
-				1A10000000000024 /* SearchView.swift */,
-				1A10000000000025 /* SearchViewModel.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-1A30000000000024 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000026 /* SourceManageView.swift */,
-				1A10000000000027 /* SourceViewModel.swift */,
-				1A10000000000049 /* SourceEditView.swift */,
-				1A1000000000004A /* SourceEditViewModel.swift */,
-				1A1000000000005F /* SourceDebugView.swift */,
-				1A10000000000060 /* SourceDebugViewModel.swift */,
-				1A30000000000029 /* Components */,
-				1A10000000000043 /* QRCodeScanView.swift */,
-				1A1000000000008A /* VerificationWebView.swift */,
-				1A100000000000FA /* OnLineImportView.swift */,
-				1A100000000000FB /* SourceExportView.swift */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		1A30000000000029 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				1A1000000000004B /* RuleFieldEditor.swift */,
-				1A1000000000004C /* BasicInfoSection.swift */,
-				1A1000000000004D /* SearchRuleSection.swift */,
-				1A1000000000004E /* ExploreRuleSection.swift */,
-				1A1000000000004F /* BookInfoRuleSection.swift */,
-				1A10000000000050 /* TocRuleSection.swift */,
-				1A10000000000051 /* ContentRuleSection.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		1A30000000000025 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000038 /* BackupRestoreView.swift */,
-				1A1000000000003A /* ReplaceRuleView.swift */,
-				1A10000000000028 /* SettingsView.swift */,
-				1A10000000000044 /* DictRuleView.swift */,
-				1A10000000000046 /* ReplaceRuleDebugView.swift */,
-				1A100000000000E1 /* TxtTocRuleView.swift */,
-				1A100000000000E2 /* FileManageView.swift */,
-				1A1000000000008F /* HttpTTSConfigView.swift */,
-				1A10000000000100 /* CoverConfigView.swift */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		1A30000000000028 /* RSS */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000042 /* RSSSubscriptionView.swift */,
-				1A100000000000F5 /* RSSViewModel.swift */,
-				1A100000000000F4 /* RSSRefreshManager.swift */,
-				1A100000000000F3 /* RuleBasedRSSParser.swift */,
-				1A100000000000FD /* RssSortView.swift */,
-				1A100000000000FE /* RssFavoritesView.swift */,
-			);
-			path = RSS;
-			sourceTree = "<group>";
-		};
-		1A30000000000027 /* Local */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000037 /* LocalBookViewModel.swift */,
-			);
-			path = Local;
-			sourceTree = "<group>";
-		};
-		1A30000000000026 /* BookDetail */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000029 /* BookDetailView.swift */,
-			);
-			path = BookDetail;
-			sourceTree = "<group>";
-		};
-		1A30000000000030 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000003 /* Assets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-1A30000000000040 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1A10000000000005 /* Legado.app */,
+				00E100062B5F000400000000 /* MyScanner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-1A30000000000063 /* Remote */ = {
-			isa = PBXGroup;
-			children = (
-				1A1000000000008B /* RemoteBookView.swift */,
-			);
-			path = Remote;
-			sourceTree = "<group>";
-		};
-		1A30000000000064 /* Integration */ = {
-			isa = PBXGroup;
-			children = (
-				1A1000000000008D /* IntegrationTests.swift */,
-			);
-			path = Integration;
-			sourceTree = "<group>";
-		};
-	1A30000000000067 /* Reader */ = {
-		isa = PBXGroup;
-		children = (
-			1A300000000000A3 /* Config */,
-			1A30000000000068 /* Models */,
-			1A30000000000069 /* Views */,
-			1A300000000000A1 /* Provider */,
-			1A300000000000A2 /* Manager */,
-		);
-		path = Reader;
-		sourceTree = "<group>";
-	};
-		1A300000000000A3 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				E5F6A7B8 /* ReadBookConfig.swift */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		1A30000000000068 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8DFC2498 /* PageDirection.swift */,
-				8BCC516F /* TextPos.swift */,
-				A1DC1970 /* BaseColumn.swift */,
-				8638A62F /* TextColumn.swift */,
-				BAB33B14 /* ImageColumn.swift */,
-				887F2A29 /* TextLine.swift */,
-				BFC9EAD0 /* TextPage.swift */,
-				8898188E /* TextChapter.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-	1A30000000000069 /* Views */ = {
-		isa = PBXGroup;
-		children = (
-			9978E827 /* ContentTextView.swift */,
-		);
-		path = Views;
-		sourceTree = "<group>";
-	};
-	1A300000000000A1 /* Provider */ = {
-		isa = PBXGroup;
-		children = (
-			983E8F21 /* ChapterProvider.swift */,
-			AD13C263 /* TextChapterLayout.swift */,
-			8569919F /* TextPageFactory.swift */,
-			1A100000000000F6 /* ImageProvider.swift */,
-			1A100000000000F7 /* BookHelp.swift */,
-			1A100000000000F8 /* ContentProcessor.swift */,
-		);
-		path = Provider;
-		sourceTree = "<group>";
-	};
-	1A300000000000A2 /* Manager */ = {
-		isa = PBXGroup;
-		children = (
-			BDF737BB /* ReadBook.swift */,
-		);
-		path = Manager;
-		sourceTree = "<group>";
-	};
+/* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1A40000000000001 /* Legado */ = {
+		00E100082B5F000600000000 /* MyScanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A50000000000001 /* Build configuration list for PBXNativeTarget "Legado" */;
+			buildConfigurationList = 00E1000B2B5F000700000000 /* Build configuration list for PBXNativeTarget "MyScanner" */;
 			buildPhases = (
-				1A40000000000002 /* Sources */,
-				1A20000000000001 /* Frameworks */,
-				1A40000000000003 /* Resources */,
+				00E100092B5F000800000000 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Legado;
-			packageProductDependencies = (
-				1AC0000000000001 /* SwiftSoup */,
-				1AC0000000000002 /* Kanna */,
-				1AC0000000000003 /* ZIPFoundation */,
-			);
-			productName = Legado;
-			productReference = 1A10000000000005 /* Legado.app */;
+			name = MyScanner;
+			productName = MyScanner;
+			productReference = 00E100062B5F000400000000 /* MyScanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1A60000000000001 /* Project object */ = {
+		00E1000C2B5F000900000000 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					1A40000000000001 = {
+					00E100082B5F000600000000 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 1A50000000000002 /* Build configuration list for PBXProject "Legado" */;
+			buildConfigurationList = 00E1000D2B5F000A00000000 /* Build configuration list for PBXProject "MyScanner" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = "zh-Hans";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
-				"zh-Hans",
 			);
-			mainGroup = 1A30000000000001;
-			packageReferences = (
-				1AB0000000000001 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				1AB0000000000002 /* XCRemoteSwiftPackageReference "Kanna" */,
-				1AB0000000000003 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
-			);
-			productRefGroup = 1A30000000000040 /* Products */;
+			mainGroup = 00E100002B5F000000000000;
+			productRefGroup = 00E100072B5F000500000000 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A40000000000001 /* Legado */,
+				00E100082B5F000600000000 /* MyScanner */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		1A40000000000003 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1A00000000000004 /* Legado.xcdatamodeld in Resources */,
-				1A00000000000003 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		1A40000000000002 /* Sources */ = {
+		00E100092B5F000800000000 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A00000000000001 /* LegadoApp.swift in Sources */,
-				1A000000000000A1 /* WelcomeView.swift in Sources */,
-				1A000000000000A2 /* Router.swift in Sources */,
-				1A000000000000A3 /* CookieManager.swift in Sources */,
-				1A000000000000A5 /* HTTPClient+Retry.swift in Sources */,
-				1A000000000000A7 /* Logger.swift in Sources */,
-				1A00000000000110 /* StringUtils.swift in Sources */,
-				1A00000000000111 /* NetworkUtils.swift in Sources */,
-				1A00000000000112 /* MD5Utils.swift in Sources */,
-				1A00000000000113 /* FileUtils.swift in Sources */,
-				1A00000000000114 /* BitmapUtils.swift in Sources */,
-				1A00000000000115 /* ScreenUtils.swift in Sources */,
-				1A00000000000116 /* TimeUtils.swift in Sources */,
-				1A00000000000117 /* IOUtils.swift in Sources */,
-				1A00000000000118 /* GSONUtils.swift in Sources */,
-				1A00000000000119 /* NumberUtils.swift in Sources */,
-				1A00000000000030 /* MainTabView.swift in Sources */,
-				1A00000000000010 /* Book+CoreDataClass.swift in Sources */,
-				1A00000000000011 /* BookSource+CoreDataClass.swift in Sources */,
-				1A00000000000012 /* BookChapter+CoreDataClass.swift in Sources */,
-				1A00000000000013 /* Bookmark+CoreDataClass.swift in Sources */,
-				1A00000000000014 /* ReadConfig.swift in Sources */,
-				1A00000000000015 /* CoreDataStack.swift in Sources */,
-				1A00000000000032 /* AppConstants.swift in Sources */,
-				1A00000000000033 /* ImageCacheManager.swift in Sources */,
-				1A00000000000016 /* HTTPClient.swift in Sources */,
-				1A00000000000068 /* FullTextFetcher.swift in Sources */,
-				1A00000000000055 /* WebDAVClient.swift in Sources */,
-				1A00000000000056 /* WebDAVSyncManager.swift in Sources */,
-				1A00000000000057 /* WebDAVConfigView.swift in Sources */,
-				1A00000000000052 /* WebDAVCredentials.swift in Sources */,
-				1A00000000000053 /* WebDAVFile.swift in Sources */,
-				1A00000000000054 /* BackupInfo.swift in Sources */,
-				1A00000000000034 /* EPUBParser.swift in Sources */,
-				1A00000000000017 /* RuleEngine.swift in Sources */,
-				1A00000000000018 /* ReplaceEngine.swift in Sources */,
-				1A0000000000006C /* ReplaceEngineEnhanced.swift in Sources */,
-				1A00000000000019 /* RuleSplitter.swift in Sources */,
-				1A00000000000090 /* TocRule.swift in Sources */,
-				1A00000000000091 /* TocParser.swift in Sources */,
-				1A00000000000094 /* SourceRule.swift in Sources */,
-				1A00000000000095 /* RuleAnalyzer.swift in Sources */,
-				1A00000000000047 /* TemplateEngine.swift in Sources */,
-				1A00000000000048 /* JSBridge.swift in Sources */,
-				1A0000000000006B /* SearchOptimizer.swift in Sources */,
-				1A0000000000006A /* DataMigrationManager.swift in Sources */,
-				1A00000000000069 /* SourceSubscriptionManager.swift in Sources */,
-				1A00000000000062 /* TTSManager.swift in Sources */,
-				1A00000000000093 /* HttpTTSPlaybackManager.swift in Sources */,
-				1A000000000000F0 /* WebServerCoordinator.swift in Sources */,
-				1A000000000000F1 /* HTTPRequestHandler.swift in Sources */,
-				1A000000000000F2 /* WebServerDataProvider.swift in Sources */,
-				1A00000000000036 /* AddBookView.swift in Sources */,
-				1A00000000000020 /* BookshelfView.swift in Sources */,
-				1A00000000000021 /* BookshelfViewModel.swift in Sources */,
-				1A00000000000039 /* ReaderSettingsFullView.swift in Sources */,
-				1A00000000000022 /* ReaderView.swift in Sources */,
-				1A00000000000023 /* ReaderViewModel.swift in Sources */,
-				1A00000000000058 /* PagedReaderView.swift in Sources */,
-				1A00000000000097 /* HTMLContentView.swift in Sources */,
-				1A00000000000059 /* PageSplitter.swift in Sources */,
-				1A0000000000005A /* CoverPageView.swift in Sources */,
-				1A0000000000005B /* SlidePageView.swift in Sources */,
-				1A00000000000064 /* CurlPageView.swift in Sources */,
-				1A00000000000067 /* ReadingEnhancementManager.swift in Sources */,
-				1A00000000000065 /* AutoPageTurnManager.swift in Sources */,
-				1A00000000000066 /* AutoPageTurnControlsView.swift in Sources */,
-				1A00000000000063 /* TTSControlsView.swift in Sources */,
-				1A0000000000005C /* DiscoveryView.swift in Sources */,
-				1A0000000000005D /* ReadingStatisticsView.swift in Sources */,
-				1A0000000000005E /* ReadingStatisticsManager.swift in Sources */,
-				1A0000000000005F /* SourceDebugView.swift in Sources */,
-				1A00000000000060 /* SourceDebugViewModel.swift in Sources */,
-				1A00000000000061 /* RuleDebugger.swift in Sources */,
-				1A00000000000035 /* SearchResultView.swift in Sources */,
-				1A00000000000024 /* SearchView.swift in Sources */,
-				1A00000000000025 /* SearchViewModel.swift in Sources */,
-				1A00000000000026 /* SourceManageView.swift in Sources */,
-				1A00000000000027 /* SourceViewModel.swift in Sources */,
-				1A00000000000049 /* SourceEditView.swift in Sources */,
-				1A0000000000004A /* SourceEditViewModel.swift in Sources */,
-				1A0000000000004B /* RuleFieldEditor.swift in Sources */,
-				1A0000000000004C /* BasicInfoSection.swift in Sources */,
-				1A0000000000004D /* SearchRuleSection.swift in Sources */,
-				1A0000000000004E /* ExploreRuleSection.swift in Sources */,
-				1A0000000000004F /* BookInfoRuleSection.swift in Sources */,
-				1A00000000000050 /* TocRuleSection.swift in Sources */,
-				1A00000000000051 /* ContentRuleSection.swift in Sources */,
-				1A00000000000038 /* BackupRestoreView.swift in Sources */,
-				1A0000000000003A /* ReplaceRuleView.swift in Sources */,
-				1A00000000000028 /* SettingsView.swift in Sources */,
-				1A00000000000037 /* LocalBookViewModel.swift in Sources */,
-				1A000000000000E3 /* LocalBookScanner.swift in Sources */,
-				1A000000000000E4 /* GroupManageView.swift in Sources */,
-				1A00000000000029 /* BookDetailView.swift in Sources */,
-				1A00000000000040 /* AnalyzeUrl.swift in Sources */,
-				1A00000000000041 /* WebBook.swift in Sources */,
-1A00000000000042 /* RSSSubscriptionView.swift in Sources */,
-				1A000000000000F3 /* RuleBasedRSSParser.swift in Sources */,
-				1A000000000000F4 /* RSSRefreshManager.swift in Sources */,
-				1A000000000000F5 /* RSSViewModel.swift in Sources */,
-				1A00000000000043 /* QRCodeScanView.swift in Sources */,
-				1A00000000000044 /* DictRuleView.swift in Sources */,
-				1A00000000000045 /* ReplaceRule+CoreDataClass.swift in Sources */,
-				1A00000000000046 /* ReplaceRuleDebugView.swift in Sources */,
-				1A00000000000070 /* BookGroup+CoreDataClass.swift in Sources */,
-				1A00000000000071 /* SearchBook+CoreDataClass.swift in Sources */,
-				1A00000000000072 /* SearchKeyword+CoreDataClass.swift in Sources */,
-				1A00000000000073 /* RssSource+CoreDataClass.swift in Sources */,
-				1A00000000000074 /* RssArticle+CoreDataClass.swift in Sources */,
-				1A00000000000075 /* RssReadRecord+CoreDataClass.swift in Sources */,
-				1A00000000000076 /* RssStar+CoreDataClass.swift in Sources */,
-				1A00000000000077 /* CacheEntry+CoreDataClass.swift in Sources */,
-				1A00000000000078 /* Cookie+CoreDataClass.swift in Sources */,
-				1A00000000000079 /* ReadRecord+CoreDataClass.swift in Sources */,
-				1A0000000000007A /* BookProgress+CoreDataClass.swift in Sources */,
-				1A0000000000007B /* HttpTTS+CoreDataClass.swift in Sources */,
-				1A0000000000007C /* DictRule+CoreDataClass.swift in Sources */,
-				1A0000000000007D /* RuleSub+CoreDataClass.swift in Sources */,
-				1A0000000000007E /* TxtTocRule+CoreDataClass.swift in Sources */,
-				1A0000000000007F /* BookDeduplicator.swift in Sources */,
-				1A00000000000080 /* TableOfContentsParser.swift in Sources */,
-				1A00000000000081 /* ContentView.swift in Sources */,
-				1A00000000000082 /* Chapter.swift in Sources */,
-				1A00000000000083 /* ChangeSourceSheet.swift in Sources */,
-				1A00000000000084 /* BookmarkSheet.swift in Sources */,
-1A00000000000085 /* ChapterCacheManager.swift in Sources */,
-1A00000000000086 /* UTType+EPUB.swift in Sources */,
-				1A00000000000087 /* DocumentPickerHelper.swift in Sources */,
-				1A00000000000088 /* URLSchemeHandler.swift in Sources */,
-				1A00000000000089 /* URLConfirmHelper.swift in Sources */,
-1A0000000000008A /* VerificationWebView.swift in Sources */,
-				1A0000000000008B /* RemoteBookView.swift in Sources */,
-1A0000000000008C /* BackgroundCacheService.swift in Sources */,
-				1A0000000000008E /* DebugLogger.swift in Sources */,
-				1A0000000000006D /* EPUBReaderView.swift in Sources */,
-				1A000000000000E0 /* HTMLToTextConverter.swift in Sources */,
-				1A000000000000E1 /* TxtTocRuleView.swift in Sources */,
-			1A000000000000E2 /* FileManageView.swift in Sources */,
-			1A0000000000008F /* HttpTTSConfigView.swift in Sources */,
-			AC2612A5 /* ChapterProvider.swift in Sources */,
-			910C4BCD /* TextChapterLayout.swift in Sources */,
-			8519857C /* TextPageFactory.swift in Sources */,
-			9F865F37 /* ReadBook.swift in Sources */,
-			8F40273B /* PageDirection.swift in Sources */,
-			801672A7 /* TextPos.swift in Sources */,
-			957EA2BA /* BaseColumn.swift in Sources */,
-			ACD705C8 /* TextColumn.swift in Sources */,
-			8C2FFEFC /* ImageColumn.swift in Sources */,
-			BC35B8E3 /* TextLine.swift in Sources */,
-			8EBB34D2 /* TextPage.swift in Sources */,
-			AB1FD768 /* TextChapter.swift in Sources */,
-			A5BC7534 /* ContentTextView.swift in Sources */,
-			A1B2C3D4 /* ReadBookConfig.swift in Sources */,
-			1A000000000000F6 /* ImageProvider.swift in Sources */,
-			1A000000000000F7 /* BookHelp.swift in Sources */,
-			1A000000000000F8 /* ContentProcessor.swift in Sources */,
-			1A000000000000F9 /* MyView.swift in Sources */,
-			1A000000000000FA /* OnLineImportView.swift in Sources */,
-			1A000000000000FB /* SourceExportView.swift in Sources */,
-			1A000000000000FD /* RssSortView.swift in Sources */,
-			1A000000000000FE /* RssFavoritesView.swift in Sources */,
-			1A00000000000100 /* CoverConfigView.swift in Sources */,
-		);
-		runOnlyForDeploymentPostprocessing = 0;
-	};
+				00E100022B5F000100000000 /* MyScannerApp.swift in Sources */,
+				00E100042B5F000200000000 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		1AB0000000000001 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.0;
-			};
-		};
-		1AB0000000000002 /* XCRemoteSwiftPackageReference "Kanna" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tid-kijyun/Kanna.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.2.8;
-			};
-		};
-		1AB0000000000003 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.18;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1AC0000000000001 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1AB0000000000001 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
-		1AC0000000000002 /* Kanna */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1AB0000000000002 /* XCRemoteSwiftPackageReference "Kanna" */;
-			productName = Kanna;
-		};
-		1AC0000000000003 /* ZIPFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1AB0000000000003 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
-			productName = ZIPFoundation;
-		};
-/* End XCSwiftPackageProductDependency section */
-
 /* Begin XCBuildConfiguration section */
-		1A70000000000001 /* Debug */ = {
+		00E1000E2B5F000B00000000 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASYNCHRONOUS_SYMBOL_MAPS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		1A70000000000002 /* Release */ = {
+		00E1000F2B5F000C00000000 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASYNCHRONOUS_SYMBOL_MAPS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		1A70000000000003 /* Debug */ = {
+		} ;
+		00E100102B5F000D00000000 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODEGEN_SKIP_MODEL_CLASSES = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Legado;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.legado.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.geek.myscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		1A70000000000004 /* Release */ = {
+		00E100112B5F000E00000000 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODEGEN_SKIP_MODEL_CLASSES = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Legado;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.legado.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.geek.myscanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1356,25 +185,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A50000000000001 /* Build configuration list for PBXNativeTarget "Legado" */ = {
+		00E1000B2B5F000700000000 /* Build configuration list for PBXNativeTarget "MyScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A70000000000003 /* Debug */,
-				1A70000000000004 /* Release */,
+				00E100102B5F000D00000000 /* Debug */,
+				00E100112B5F000E00000000 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1A50000000000002 /* Build configuration list for PBXProject "Legado" */ = {
+		00E1000D2B5F000A00000000 /* Build configuration list for PBXProject "MyScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A70000000000001 /* Debug */,
-				1A70000000000002 /* Release */,
+				00E1000E2B5F000B00000000 /* Debug */,
+				00E1000F2B5F000C00000000 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1A60000000000001 /* Project object */;
+	rootObject = 00E1000C2B5F000900000000 /* Project object */;
 }
