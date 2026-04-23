@@ -5,14 +5,18 @@
     <key>CFBundleIdentifier</key>
     <string>com.geek.myscanner</string>
     <key>CFBundleName</key>
-    <string>IP扫描器</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
+    <string>MyScanner</string>
     <key>CFBundleShortVersionString</key>
     <string>1.0</string>
     <key>CFBundleVersion</key>
     <string>1</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
     <key>NSLocalNetworkUsageDescription</key>
-    <string>我们需要访问局 Apple 域网来扫描 IP 在线状态</string>
+    <string>我们需要访问局域网以进行扫描</string>
 </dict>
 </plist>
