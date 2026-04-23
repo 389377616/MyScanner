@@ -1,19 +1,28 @@
 name: 自动编译扫描器
 
+# 触发条件：只要 main 分支有代码提交，就自动运行
 on:
   push:
     branches: [ main ]
+  workflow_dispatch: # 允许你在 GitHub 网页上点击按钮手动运行
 
 jobs:
-  build:
-    name: 云端打包
-    runs-on: macos-latest
+  build_ios:
+    name: 运行苹果云端打包
+    runs-on: macos-latest # 使用 GitHub 提供的最新 macOS 环境
     
     steps:
+      # 1. 从仓库下载你的代码到云端电脑
       - name: 检出代码
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # 已升级到 v4，解决报错
 
-      - name: 强制编译 (忽略签名)
+      # 2. 设置 Xcode 环境
+      - name: 设置 Xcode 版本
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      # 3. 开始编译 (核心指令)
+      # 注意：-scheme 必须和 project.pbxproj 内部的名字一致
+      - name: 编译 iOS 项目 (忽略签名)
         run: |
           xcodebuild archive \
             -project MyScanner.xcodeproj \
@@ -22,14 +31,19 @@ jobs:
             -sdk iphoneos \
             CODE_SIGNING_ALLOWED=NO
 
-      - name: 导出 IPA
+      # 4. 封装成手机可以安装的 .ipa 格式
+      - name: 制作 IPA 安装包
         run: |
           mkdir -p Payload
+          # 将编译好的 .app 程序文件夹拷贝到 Payload 目录
           cp -r Build/MyScanner.xcarchive/Products/Applications/*.app Payload/
+          # 压缩成 ipa
           zip -r MyScanner.ipa Payload
 
-      - name: 上传产物
-        uses: actions/upload-artifact@v3
+      # 5. 将生成的安装包上传到 GitHub 网页供你下载
+      - name: 上传 IPA 产物
+        uses: actions/upload-artifact@v4 # 核心修改：必须使用 v4 才能通过
         with:
-          name: Scanner_IPA
+          name: 我的扫描器安装包 # 下载时看到的名字
           path: MyScanner.ipa
+          retention-days: 7 # 自动保存 7 天，过期删除以节省空间
