@@ -20,5 +20,8 @@
     <true/>
     <key>NSLocalNetworkUsageDescription</key>
     <string>我们需要访问局域网以进行扫描</string>
+    
+    <key>UILaunchScreen</key>
+    <dict/>
 </dict>
 </plist>
