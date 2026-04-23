@@ -17,7 +17,24 @@ jobs:
       - name: 2. 设置环境
         run: sudo xcode-select -s /Applications/Xcode.app
 
-      - name: 3. 编译二进制
+      - name: 3. 自动更新版本号 (关键步骤)
+        run: |
+          # 获取 GitHub 的运行次数 (从 1 开始)
+          RUN_COUNT=${{ github.run_number }}
+          
+          # 计算小版本号 (如果你想第一次是 1.0，则需要减 1)
+          MINOR_VERSION=$(( $RUN_COUNT - 1 ))
+          FULL_VERSION="1.$MINOR_VERSION"
+          
+          echo "本次打包版本号设定为: $FULL_VERSION (Build: $RUN_COUNT)"
+          
+          # 使用 PlistBuddy 修改根目录下的 Info.plist
+          # CFBundleShortVersionString 对应“软件版本号” (如 1.0)
+          # CFBundleVersion 对应“构建版本号” (如 1, 2, 3)
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $FULL_VERSION" Info.plist
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $RUN_COUNT" Info.plist
+
+      - name: 4. 编译二进制
         run: |
           xcodebuild archive \
             -project MyScanner.xcodeproj \
@@ -26,20 +43,15 @@ jobs:
             -sdk iphoneos \
             CODE_SIGNING_ALLOWED=NO
 
-      - name: 4. 组装 IPA
+      - name: 5. 组装 IPA
         run: |
-          # 创建打包用的 Payload 文件夹
           mkdir -p Payload
-          
-          # 直接将 Xcode 编译好、已经注入了配置的 .app 拷贝进来
           cp -r Build/MyScanner.xcarchive/Products/Applications/*.app Payload/
-          
-          # 打包成 ipa
           zip -r MyScanner.ipa Payload
 
-      - name: 5. 上传产物
+      - name: 6. 上传产物
         uses: actions/upload-artifact@v4
         with:
-          name: 我的扫描器修正版
+          name: 我的扫描器-V1.${{ github.run_number }}
           path: MyScanner.ipa
           retention-days: 7
