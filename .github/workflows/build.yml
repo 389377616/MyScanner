@@ -26,25 +26,15 @@ jobs:
             -sdk iphoneos \
             CODE_SIGNING_ALLOWED=NO
 
-      - name: 4. 强制组装 IPA (关键步骤)
+      - name: 4. 组装 IPA
         run: |
           # 创建打包用的 Payload 文件夹
           mkdir -p Payload
           
-          # 第一步：先把编译出的 App 文件夹拷进来
+          # 直接将 Xcode 编译好、已经注入了配置的 .app 拷贝进来
           cp -r Build/MyScanner.xcarchive/Products/Applications/*.app Payload/
           
-          # 第二步：获取实际的 App 文件夹名称 (防止路径对不上)
-          APP_NAME=$(ls Payload | grep .app)
-          
-          # 第三步：【核心修复】把你在仓库根目录的 Info.plist 强制覆盖进去
-          # 这样能确保 Info.plist 绝对是在 .app 文件夹的第一层
-          cp Info.plist "Payload/$APP_NAME/Info.plist"
-          
-          # 检查一下文件是否真的进去了 (调试用)
-          ls -l "Payload/$APP_NAME/Info.plist"
-          
-          # 第四步：打包成 ipa
+          # 打包成 ipa
           zip -r MyScanner.ipa Payload
 
       - name: 5. 上传产物
