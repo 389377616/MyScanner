@@ -34,8 +34,7 @@ struct ContentView: View {
                 }.padding()
             }
         }
-        // 确保 UI 延伸到安全区，利用全部屏幕空间
-        .edgesIgnoringSafeArea(.bottom) 
+        .edgesIgnoringSafeArea(.bottom)
     }
 
     func startScan() {
@@ -43,65 +42,87 @@ struct ContentView: View {
         scannedCount = 0
         for i in 1...255 { results[i] = nil }
         
-        for i in 1...255 {
-            let ip = "\(ipPrefix).\(i)"
-            checkIP(ip: ip) { isOnline in
-                DispatchQueue.main.async {
-                    self.results[i] = isOnline
-                    self.scannedCount += 1
-                    // 255个IP全测完后恢复按钮状态
-                    if self.scannedCount == 255 {
-                        self.isScanning = false
+        // 放到后台线程处理，避免阻塞 UI
+        DispatchQueue.global(qos: .userInitiated).async {
+            // 核心修复 1：设置信号量，全局最多允许 15 个并发连接，防止路由器丢包
+            let semaphore = DispatchSemaphore(value: 15)
+            
+            for i in 1...255 {
+                semaphore.wait() // 申请通行证，满15个就排队等待
+                
+                let ip = "\(self.ipPrefix).\(i)"
+                self.checkIP(ip: ip) { isOnline in
+                    DispatchQueue.main.async {
+                        self.results[i] = isOnline
+                        self.scannedCount += 1
+                        if self.scannedCount == 255 {
+                            self.isScanning = false
+                        }
                     }
+                    semaphore.signal() // 扫描完毕，释放一个名额给后面的 IP
                 }
             }
         }
     }
     
-    // 使用 Network 框架进行并发 TCP 探测，真实检测设备存活
+    // 核心修复 2：多端口递归探测 + 延长超时
     func checkIP(ip: String, completion: @escaping (Bool) -> Void) {
-        let host = NWEndpoint.Host(ip)
-        // 使用 80 端口作为敲门砖
-        let port = NWEndpoint.Port(rawValue: 80)!
+        // 测试组合：网页端口(80/443), Windows必备端口(135), Linux/NAS常用端口(22)
+        let portsToTest: [UInt16] = [80, 443, 135, 22]
+        var currentPortIndex = 0
         
-        let connection = NWConnection(host: host, port: port, using: .tcp)
-        var hasCompleted = false
-        
-        connection.stateUpdateHandler = { state in
-            if hasCompleted { return }
+        func testNextPort() {
+            if currentPortIndex >= portsToTest.count {
+                completion(false) // 所有端口都没回应，判定为离线
+                return
+            }
             
-            switch state {
-            case .ready:
-                // 端口开放，设备绝对在线
-                hasCompleted = true
-                connection.cancel()
-                completion(true)
+            let portNum = portsToTest[currentPortIndex]
+            let host = NWEndpoint.Host(ip)
+            let port = NWEndpoint.Port(rawValue: portNum)!
+            let connection = NWConnection(host: host, port: port, using: .tcp)
+            var hasCompleted = false
+            
+            connection.stateUpdateHandler = { state in
+                if hasCompleted { return }
                 
-            case .failed(let error):
-                hasCompleted = true
-                let errString = error.debugDescription
-                // 核心逻辑：如果收到“拒绝连接(ECONNREFUSED/61)”，说明设备虽然没开网页服务，但网络层成功拦截并拒绝了我们，证明设备在线！
-                if errString.contains("refused") || errString.contains("61") || errString.contains("ECONNREFUSED") {
-                    completion(true)
-                } else {
-                    completion(false)
+                switch state {
+                case .ready:
+                    hasCompleted = true
+                    connection.cancel()
+                    completion(true) // 端口开放，设备在线
+                    
+                case .failed(let error):
+                    hasCompleted = true
+                    let errString = error.debugDescription
+                    // 底层网络主动拒绝，说明设备肯定存在于内网
+                    if errString.contains("refused") || errString.contains("61") || errString.contains("ECONNREFUSED") {
+                        completion(true)
+                    } else {
+                        // 超时或其他错误，换下一个端口继续测
+                        currentPortIndex += 1
+                        testNextPort()
+                    }
+                    connection.cancel()
+                    
+                default:
+                    break
                 }
-                connection.cancel()
-                
-            default:
-                break
+            }
+            
+            connection.start(queue: .global())
+            
+            // 核心修复 3：将超时时间放宽到 1.5 秒，照顾弱网和休眠设备
+            DispatchQueue.global().asyncAfter(deadline: .now() + 1.5) {
+                if !hasCompleted {
+                    hasCompleted = true
+                    connection.cancel()
+                    currentPortIndex += 1
+                    testNextPort() // 当前端口超时，直接测下一个
+                }
             }
         }
         
-        connection.start(queue: .global())
-        
-        // 局域网响应极快，设定 0.5 秒超时即可（超时说明 IP 空置）
-        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
-            if !hasCompleted {
-                hasCompleted = true
-                connection.cancel()
-                completion(false)
-            }
-        }
+        testNextPort()
     }
 }
