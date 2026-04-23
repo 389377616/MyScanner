@@ -1,0 +1,28 @@
+# Xcode 缓存与本地设置
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+
+# 编译产物
+*.xcarchive
+*.framework
+*.dSYM
+*.app
+*.ipa
+
+# 临时文件
+.DS_Store
