@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-# 👇 核心修复：显式赋予 GITHUB_TOKEN 写入 Release 和 Tag 的权限 👇
+# 赋予 GITHUB_TOKEN 写入 Release 和 Tag 的权限
 permissions:
   contents: write
 
@@ -47,17 +47,19 @@ jobs:
             -sdk iphoneos \
             CODE_SIGNING_ALLOWED=NO
 
-      - name: 5. 组装 IPA
+      - name: 5. 组装并动态命名 IPA (关键修改点)
         run: |
           mkdir -p Payload
           cp -r Build/MyScanner.xcarchive/Products/Applications/*.app Payload/
-          zip -r MyScanner.ipa Payload
+          # 将导出的版本号变量拼接进文件名中
+          zip -r "MyScanner-V${{ env.APP_VERSION }}.ipa" Payload
 
       - name: 6. 上传工作流产物 (Artifacts)
         uses: actions/upload-artifact@v4
         with:
           name: MyScanner-V${{ env.APP_VERSION }}
-          path: MyScanner.ipa
+          # 上传路径需要对应新的带版本号的文件名
+          path: "MyScanner-V${{ env.APP_VERSION }}.ipa"
           retention-days: 7
 
       - name: 7. 发布到 GitHub Releases
@@ -66,7 +68,8 @@ jobs:
         with:
           tag_name: v${{ env.APP_VERSION }}
           name: "MyScanner V${{ env.APP_VERSION }} (Build ${{ env.BUILD_NUMBER }})"
-          files: MyScanner.ipa
+          # 发布文件也要对应新的带版本号的文件名
+          files: "MyScanner-V${{ env.APP_VERSION }}.ipa"
           body: |
             ## 🚀 更新内容
             ${{ github.event.head_commit.message }}
