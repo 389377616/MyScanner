@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# 👇 核心修复：显式赋予 GITHUB_TOKEN 写入 Release 和 Tag 的权限 👇
+permissions:
+  contents: write
+
 jobs:
   build_ios:
     name: 运行苹果云端打包与发布
