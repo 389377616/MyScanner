@@ -1,0 +1,35 @@
+name: 自动编译扫描器
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: 云端打包
+    runs-on: macos-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 强制编译 (忽略签名)
+        run: |
+          xcodebuild archive \
+            -project MyScanner.xcodeproj \
+            -scheme Legado \
+            -archivePath "Build/MyScanner.xcarchive" \
+            -sdk iphoneos \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: 导出 IPA
+        run: |
+          mkdir -p Payload
+          cp -r Build/MyScanner.xcarchive/Products/Applications/*.app Payload/
+          zip -r MyScanner.ipa Payload
+
+      - name: 上传产物
+        uses: actions/upload-artifact@v3
+        with:
+          name: Scanner_IPA
+          path: MyScanner.ipa
