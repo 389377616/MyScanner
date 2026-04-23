@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleIdentifier</key>
-    <string>com.極客.MyScanner</string>
+    <string>com.geek.myscanner</string>
     <key>CFBundleName</key>
     <string>IP扫描器</string>
     <key>CFBundlePackageType</key>
