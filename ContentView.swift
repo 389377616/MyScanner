@@ -81,7 +81,7 @@ struct ContentView: View {
         for i in 1...255 { results[i] = nil }
         
         DispatchQueue.global(qos: .userInitiated).async {
-            // 🚀 核心修复 1：降低并发到 12，彻底杜绝系统底层 Socket 耗尽和网络缓冲区溢出
+            // 维持安全并发量，防止 iOS 强制掐断网络
             let semaphore = DispatchSemaphore(value: 12) 
             
             for i in 1...255 {
@@ -103,16 +103,19 @@ struct ContentView: View {
     }
     
     func checkIPHybrid(ip: String, completion: @escaping (Bool) -> Void) {
-        // 🚀 核心修复 2：策略调整 -> 先全力 Ping，不通再测 TCP，不抢占系统资源
         DispatchQueue.global().async {
             var pingSuccess = false
-            for attempt in 1...3 {
-                // 每次传入不同的序列号，防止防火墙丢弃重复包
+            
+            // 🚀 核心战术调整：4 次深度尝试 + 0.3秒缓慢退避
+            // 这给了路由器完整的 ARP 广播时间，休眠设备也绝对有时间被唤醒
+            for attempt in 1...4 { 
                 if self.nativeICMPPing(ip: ip, sequence: UInt16(attempt)) {
                     pingSuccess = true
                     break
                 }
-                Thread.sleep(forTimeInterval: 0.1) // 失败退避，给路由器喘息时间
+                if attempt < 4 {
+                    Thread.sleep(forTimeInterval: 0.3) 
+                }
             }
             
             if pingSuccess {
@@ -120,8 +123,7 @@ struct ContentView: View {
                 return
             }
             
-            // 策略 B：Ping 彻底失败后，再动用 TCP 作为最后底牌
-            // 扩展了常用监控/NAS/智能家居端口 554, 8080, 5000, 22
+            // Ping 彻底失败的保底 TCP 探测
             let portsToTest: [UInt16] = [80, 443, 22, 135, 445, 554, 5000, 5353, 8080]
             var hasCompleted = false
             let lock = NSLock()
@@ -161,7 +163,6 @@ struct ContentView: View {
                 connection.start(queue: queue)
             }
             
-            // TCP 等待 1.5 秒
             DispatchQueue.global().asyncAfter(deadline: .now() + 1.5) {
                 lock.lock()
                 defer { lock.unlock() }
@@ -174,17 +175,16 @@ struct ContentView: View {
         }
     }
 
-    // 🚀 底层 Ping 实现：引入递增序列号和溢出保护
+    // 🚀 彻底重写的内核级 Ping 
     func nativeICMPPing(ip: String, sequence: UInt16) -> Bool {
         let fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_ICMP)
         if fd < 0 {
-            // 系统套接字耗尽 (ENOBUFS/EMFILE)，立刻休眠保护，等下一次重试
             Thread.sleep(forTimeInterval: 0.1)
             return false
         }
         defer { close(fd) }
 
-        var tv = timeval(tv_sec: 1, tv_usec: 0)
+        var tv = timeval(tv_sec: 1, tv_usec: 0) // 1 秒超时
         setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, socklen_t(MemoryLayout<timeval>.size))
 
         var addr = sockaddr_in()
@@ -192,36 +192,53 @@ struct ContentView: View {
         addr.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
         if inet_pton(AF_INET, ip, &addr.sin_addr) <= 0 { return false }
 
-        let connected = withUnsafePointer(to: &addr) {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { ptr in
-                connect(fd, ptr, socklen_t(MemoryLayout<sockaddr_in>.size))
-            }
-        }
-        guard connected == 0 else { return false }
-
-        // 伪装标准负载
-        var packet = [UInt8](repeating: 97, count: 64) 
+        // 构造满血版的 64 字节苹果标准 Ping 包
+        var packet = [UInt8](repeating: 0, count: 64) 
         packet[0] = 8 // Type: Echo Request
         packet[1] = 0 // Code
         packet[2] = 0 // Checksum
         packet[3] = 0
         packet[4] = 0 // ID
         packet[5] = 0 
-        // 🚀 核心修复 3：写入动态序列号
         packet[6] = UInt8(sequence >> 8)
         packet[7] = UInt8(sequence & 0x00FF)
+        
+        // 填充标准的数据载荷，避免某些严苛的防火墙拦截空包
+        for i in 8..<64 {
+            packet[i] = UInt8(i % 256)
+        }
 
-        let sent = send(fd, packet, packet.count, 0)
+        // 🚀 核心修复：废弃 connect，使用 sendto 彻底激活内核的 ARP 寻址机制
+        var sent: Int = 0
+        withUnsafePointer(to: &addr) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { ptr in
+                sent = sendto(fd, packet, packet.count, 0, ptr, socklen_t(MemoryLayout<sockaddr_in>.size))
+            }
+        }
+        
         if sent <= 0 { return false }
 
         var buffer = [UInt8](repeating: 0, count: 128)
+        var fromAddr = sockaddr_in()
+        var fromLen = socklen_t(MemoryLayout<sockaddr_in>.size)
+        
         let startTime = Date()
         
         while Date().timeIntervalSince(startTime) < 1.0 {
-            let received = recv(fd, &buffer, buffer.count, 0)
+            // 🚀 核心修复：使用 recvfrom 接收并校验来源 IP
+            let received = withUnsafeMutablePointer(to: &fromAddr) {
+                $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { ptr in
+                    recvfrom(fd, &buffer, buffer.count, 0, ptr, &fromLen)
+                }
+            }
+            
             if received >= 8 {
-                if buffer[0] == 0 { // 确认收到 Echo Reply 回包
-                    return true
+                // 1. 判断是否是 Echo Reply 回应包 (Type = 0)
+                if buffer[0] == 0 {
+                    // 2. 物理级防串线：严格对比回包的 IP 和我们请求的目标 IP 是否一致！
+                    if fromAddr.sin_addr.s_addr == addr.sin_addr.s_addr {
+                        return true
+                    }
                 }
             }
         }
