@@ -3,7 +3,7 @@ import Network
 import Darwin
 
 struct ContentView: View {
-    @State private var ipPrefix: String = "192.168.1"
+    @State private var ipPrefix: String = "192.168.1" // 默认占位符，启动时会被自动替换
     @State private var results: [Int: Bool?] = [:] 
     @State private var isScanning = false
     @State private var scannedCount = 0
@@ -12,7 +12,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("局域网 IP 扫描器 (究极混合版)").font(.headline).padding()
+            Text("局域网 IP 扫描器 (自动识别段)").font(.headline).padding()
             HStack {
                 TextField("IP 段 (如 192.168.1)", text: $ipPrefix)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -37,9 +37,48 @@ struct ContentView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            // 核心修复 1：APP打开时，强制触发 iOS 局域网权限弹窗
+            // 🚀 核心优化 1：打开 App 时自动获取本机 Wi-Fi 所在的 IP 段并填入输入框
+            ipPrefix = getLocalIPPrefix()
+            // 强制触发 iOS 局域网权限弹窗
             triggerLocalNetworkPrivacyAlert()
         }
+    }
+
+    // 🚀 核心优化 2：读取底层网卡信息，提取本机 IP 的前三段
+    func getLocalIPPrefix() -> String {
+        var prefix = "192.168.1" // 如果没连 Wi-Fi 的保底默认值
+        var ifaddr: UnsafeMutablePointer<ifaddrs>?
+        
+        // 获取所有网络接口信息
+        guard getifaddrs(&ifaddr) == 0 else { return prefix }
+        guard let firstAddr = ifaddr else { return prefix }
+        
+        // 遍历所有接口
+        for ptr in sequence(first: firstAddr, next: { $0.pointee.ifa_next }) {
+            let addr = ptr.pointee.ifa_addr.pointee
+            
+            // 筛选 IPv4 地址 (AF_INET)
+            if addr.sa_family == UInt8(AF_INET) {
+                let name = String(cString: ptr.pointee.ifa_name)
+                // en0 是 iOS 设备的 Wi-Fi 网卡固定名称
+                if name == "en0" {
+                    var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                    if getnameinfo(ptr.pointee.ifa_addr, socklen_t(addr.sa_len),
+                                   &hostname, socklen_t(hostname.count),
+                                   nil, socklen_t(0), NI_NUMERICHOST) == 0 {
+                        let ipString = String(cString: hostname)
+                        // 将 192.168.x.x 按照 "." 拆分
+                        let components = ipString.split(separator: ".")
+                        if components.count == 4 {
+                            // 重新拼接前三段
+                            prefix = "\(components[0]).\(components[1]).\(components[2])"
+                        }
+                    }
+                }
+            }
+        }
+        freeifaddrs(ifaddr) // 释放 C 语言指针内存
+        return prefix
     }
 
     // 发送一个隐形的 TCP 请求，逼迫系统索要局域网权限
@@ -59,7 +98,6 @@ struct ContentView: View {
         for i in 1...255 { results[i] = nil }
         
         DispatchQueue.global(qos: .userInitiated).async {
-            // 控制混合扫描的并发量，防止挤爆系统连接池
             let semaphore = DispatchSemaphore(value: 30) 
             
             for i in 1...255 {
@@ -80,13 +118,12 @@ struct ContentView: View {
         }
     }
     
-    // 🚀 核心修复 2：究极融合检测（ICMP Ping + TCP 端口双管齐下）
+    // 究极融合检测（ICMP Ping + TCP 端口双管齐下）
     func checkIPHybrid(ip: String, completion: @escaping (Bool) -> Void) {
         var hasCompleted = false
         let lock = NSLock()
         var connections: [NWConnection] = []
         
-        // 标记设备在线，并立刻取消所有其他无用的探测，节约性能
         func markOnline() {
             lock.lock()
             defer { lock.unlock() }
@@ -97,7 +134,7 @@ struct ContentView: View {
             }
         }
 
-        // 策略 A：启动底层 ICMP Ping (专治不开放端口的 IoT 设备和苹果设备)
+        // 策略 A：启动底层 ICMP Ping
         DispatchQueue.global().async {
             for attempt in 1...2 {
                 if self.nativeICMPPing(ip: ip) {
@@ -108,7 +145,7 @@ struct ContentView: View {
             }
         }
 
-        // 策略 B：同时启动 TCP 关键端口探测 (专治开启防火墙禁 Ping 的 Windows 电脑)
+        // 策略 B：同时启动 TCP 关键端口探测
         let portsToTest: [UInt16] = [80, 443, 135, 445, 5353]
         let queue = DispatchQueue(label: "com.scanner.tcp.\(ip)", attributes: .concurrent)
         
