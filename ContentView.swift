@@ -1,5 +1,5 @@
 import SwiftUI
-import Network
+import Darwin // 引入底层 C 语言套接字库
 
 struct ContentView: View {
     @State private var ipPrefix: String = "192.168.1"
@@ -11,7 +11,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("局域网 IP 扫描器").font(.headline).padding()
+            Text("局域网 IP 扫描器 (专业高精度版)").font(.headline).padding()
             HStack {
                 TextField("IP 段 (如 192.168.1)", text: $ipPrefix)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -34,6 +34,7 @@ struct ContentView: View {
                 }.padding()
             }
         }
+        // 解除底部全面屏安全区限制
         .edgesIgnoringSafeArea(.bottom)
     }
 
@@ -42,16 +43,31 @@ struct ContentView: View {
         scannedCount = 0
         for i in 1...255 { results[i] = nil }
         
-        // 放到后台线程处理，避免阻塞 UI
         DispatchQueue.global(qos: .userInitiated).async {
-            // 核心修复 1：设置信号量，全局最多允许 15 个并发连接，防止路由器丢包
-            let semaphore = DispatchSemaphore(value: 15)
+            // 控制并发量，防止过大的并发导致系统套接字被挤爆或路由器拥堵
+            let semaphore = DispatchSemaphore(value: 64)
             
             for i in 1...255 {
-                semaphore.wait() // 申请通行证，满15个就排队等待
-                
+                semaphore.wait()
                 let ip = "\(self.ipPrefix).\(i)"
-                self.checkIP(ip: ip) { isOnline in
+                
+                DispatchQueue.global().async {
+                    var isOnline = false
+                    
+                    // 🚀 黄金策略：最多重试 3 次，对抗局域网 ARP 丢包和休眠设备
+                    for attempt in 1...3 {
+                        if self.nativeICMPPing(ip: ip) {
+                            isOnline = true
+                            break // 只要通了一次，立刻判定在线并退出重试，极大加快扫描速度
+                        } else {
+                            // 如果没通，动态退避：第一次等 0.1秒，第二次等 0.2秒
+                            // 给休眠设备唤醒芯片和路由器寻址的时间
+                            if attempt < 3 {
+                                Thread.sleep(forTimeInterval: Double(attempt) * 0.1)
+                            }
+                        }
+                    }
+                    
                     DispatchQueue.main.async {
                         self.results[i] = isOnline
                         self.scannedCount += 1
@@ -59,70 +75,60 @@ struct ContentView: View {
                             self.isScanning = false
                         }
                     }
-                    semaphore.signal() // 扫描完毕，释放一个名额给后面的 IP
+                    semaphore.signal()
                 }
             }
         }
     }
     
-    // 核心修复 2：多端口递归探测 + 延长超时
-    func checkIP(ip: String, completion: @escaping (Bool) -> Void) {
-        // 测试组合：网页端口(80/443), Windows必备端口(135), Linux/NAS常用端口(22)
-        let portsToTest: [UInt16] = [80, 443, 135, 22]
-        var currentPortIndex = 0
-        
-        func testNextPort() {
-            if currentPortIndex >= portsToTest.count {
-                completion(false) // 所有端口都没回应，判定为离线
-                return
-            }
-            
-            let portNum = portsToTest[currentPortIndex]
-            let host = NWEndpoint.Host(ip)
-            let port = NWEndpoint.Port(rawValue: portNum)!
-            let connection = NWConnection(host: host, port: port, using: .tcp)
-            var hasCompleted = false
-            
-            connection.stateUpdateHandler = { state in
-                if hasCompleted { return }
-                
-                switch state {
-                case .ready:
-                    hasCompleted = true
-                    connection.cancel()
-                    completion(true) // 端口开放，设备在线
-                    
-                case .failed(let error):
-                    hasCompleted = true
-                    let errString = error.debugDescription
-                    // 底层网络主动拒绝，说明设备肯定存在于内网
-                    if errString.contains("refused") || errString.contains("61") || errString.contains("ECONNREFUSED") {
-                        completion(true)
-                    } else {
-                        // 超时或其他错误，换下一个端口继续测
-                        currentPortIndex += 1
-                        testNextPort()
-                    }
-                    connection.cancel()
-                    
-                default:
-                    break
-                }
-            }
-            
-            connection.start(queue: .global())
-            
-            // 核心修复 3：将超时时间放宽到 1.5 秒，照顾弱网和休眠设备
-            DispatchQueue.global().asyncAfter(deadline: .now() + 1.5) {
-                if !hasCompleted {
-                    hasCompleted = true
-                    connection.cancel()
-                    currentPortIndex += 1
-                    testNextPort() // 当前端口超时，直接测下一个
-                }
+    // 🚀 调用 Darwin 底层 API 手捏真正的 ICMP 数据包
+    func nativeICMPPing(ip: String) -> Bool {
+        // 创建 Datagram 类型的 ICMP 套接字 (Apple 专门放开的无特权 Ping 接口)
+        let fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_ICMP)
+        guard fd >= 0 else { return false }
+        defer { close(fd) }
+
+        // 设置接收超时时间为 1 秒
+        var tv = timeval(tv_sec: 1, tv_usec: 0)
+        setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, socklen_t(MemoryLayout<timeval>.size))
+
+        // 构造目标地址
+        var addr = sockaddr_in()
+        addr.sin_family = sa_family_t(AF_INET)
+        addr.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        // 将字符串 IP 转换为网络字节序，如果 IP 不合法直接返回
+        if inet_pton(AF_INET, ip, &addr.sin_addr) <= 0 { return false }
+
+        // 构造最精简的 ICMP Echo Request 包头 (只需 8 字节)
+        // 结构: [类型:8, 代码:0, 校验和:0,0, 标识符:0,0, 序列号:0,0]
+        // 极客魔法：使用 SOCK_DGRAM 发送时，Mac/iOS 内核会自动帮我们计算校验和并填充正确的标识符！
+        let packet: [UInt8] = [8, 0, 0, 0, 0, 0, 0, 0]
+
+        // 发送数据包
+        let sent = withUnsafePointer(to: &addr) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { ptr in
+                sendto(fd, packet, packet.count, 0, ptr, socklen_t(MemoryLayout<sockaddr_in>.size))
             }
         }
+
+        if sent <= 0 { return false }
+
+        // 准备接收回包
+        var buffer = [UInt8](repeating: 0, count: 64)
+        var fromAddr = sockaddr_in()
+        var fromLen = socklen_t(MemoryLayout<sockaddr_in>.size)
+
+        let received = withUnsafeMutablePointer(to: &fromAddr) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { ptr in
+                recvfrom(fd, &buffer, buffer.count, 0, ptr, &fromLen)
+            }
+        }
+
+        // 如果收到的数据超过 8 字节，并且包头的 Type 字段为 0 (Echo Reply，即 Ping 回应包)
+        if received >= 8 && buffer[0] == 0 {
+            return true
+        }
         
-        testNextPort()
+        return false
     }
 }
