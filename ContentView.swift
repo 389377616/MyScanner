@@ -3,7 +3,7 @@ import Network
 import Darwin
 
 struct ContentView: View {
-    @State private var ipPrefix: String = "192.168.1" // 默认占位符，启动时会被自动替换
+    @State private var ipPrefix: String = "192.168.1"
     @State private var results: [Int: Bool?] = [:] 
     @State private var isScanning = false
     @State private var scannedCount = 0
@@ -12,7 +12,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("局域网 IP 扫描器 (自动识别段)").font(.headline).padding()
+            Text("局域网 IP 扫描器").font(.headline).padding()
             HStack {
                 TextField("IP 段 (如 192.168.1)", text: $ipPrefix)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -37,51 +37,40 @@ struct ContentView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            // 🚀 核心优化 1：打开 App 时自动获取本机 Wi-Fi 所在的 IP 段并填入输入框
             ipPrefix = getLocalIPPrefix()
-            // 强制触发 iOS 局域网权限弹窗
             triggerLocalNetworkPrivacyAlert()
         }
     }
 
-    // 🚀 核心优化 2：读取底层网卡信息，提取本机 IP 的前三段
     func getLocalIPPrefix() -> String {
-        var prefix = "192.168.1" // 如果没连 Wi-Fi 的保底默认值
+        var prefix = "192.168.1"
         var ifaddr: UnsafeMutablePointer<ifaddrs>?
         
-        // 获取所有网络接口信息
         guard getifaddrs(&ifaddr) == 0 else { return prefix }
         guard let firstAddr = ifaddr else { return prefix }
         
-        // 遍历所有接口
         for ptr in sequence(first: firstAddr, next: { $0.pointee.ifa_next }) {
             let addr = ptr.pointee.ifa_addr.pointee
-            
-            // 筛选 IPv4 地址 (AF_INET)
             if addr.sa_family == UInt8(AF_INET) {
                 let name = String(cString: ptr.pointee.ifa_name)
-                // en0 是 iOS 设备的 Wi-Fi 网卡固定名称
                 if name == "en0" {
                     var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
                     if getnameinfo(ptr.pointee.ifa_addr, socklen_t(addr.sa_len),
                                    &hostname, socklen_t(hostname.count),
                                    nil, socklen_t(0), NI_NUMERICHOST) == 0 {
                         let ipString = String(cString: hostname)
-                        // 将 192.168.x.x 按照 "." 拆分
                         let components = ipString.split(separator: ".")
                         if components.count == 4 {
-                            // 重新拼接前三段
                             prefix = "\(components[0]).\(components[1]).\(components[2])"
                         }
                     }
                 }
             }
         }
-        freeifaddrs(ifaddr) // 释放 C 语言指针内存
+        freeifaddrs(ifaddr)
         return prefix
     }
 
-    // 发送一个隐形的 TCP 请求，逼迫系统索要局域网权限
     func triggerLocalNetworkPrivacyAlert() {
         let host = NWEndpoint.Host("\(ipPrefix).1")
         let port = NWEndpoint.Port(rawValue: 80)!
@@ -98,7 +87,7 @@ struct ContentView: View {
         for i in 1...255 { results[i] = nil }
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let semaphore = DispatchSemaphore(value: 30) 
+            let semaphore = DispatchSemaphore(value: 40) // 提升并发到 40
             
             for i in 1...255 {
                 semaphore.wait()
@@ -118,7 +107,6 @@ struct ContentView: View {
         }
     }
     
-    // 究极融合检测（ICMP Ping + TCP 端口双管齐下）
     func checkIPHybrid(ip: String, completion: @escaping (Bool) -> Void) {
         var hasCompleted = false
         let lock = NSLock()
@@ -134,18 +122,18 @@ struct ContentView: View {
             }
         }
 
-        // 策略 A：启动底层 ICMP Ping
+        // 策略 A：采用满血版的 ICMP Ping
         DispatchQueue.global().async {
-            for attempt in 1...2 {
+            for attempt in 1...3 {
                 if self.nativeICMPPing(ip: ip) {
                     markOnline()
                     return
                 }
-                if attempt < 2 { Thread.sleep(forTimeInterval: 0.1) }
+                if attempt < 3 { Thread.sleep(forTimeInterval: 0.1) } // 失败避退，防网络拥塞
             }
         }
 
-        // 策略 B：同时启动 TCP 关键端口探测
+        // 策略 B：TCP 端口探测作为保底补充
         let portsToTest: [UInt16] = [80, 443, 135, 445, 5353]
         let queue = DispatchQueue(label: "com.scanner.tcp.\(ip)", attributes: .concurrent)
         
@@ -175,7 +163,6 @@ struct ContentView: View {
             connection.start(queue: queue)
         }
         
-        // 全局超时：如果 1.5 秒内 Ping 和 TCP 全都石沉大海，才彻底判定离线
         DispatchQueue.global().asyncAfter(deadline: .now() + 1.5) {
             lock.lock()
             defer { lock.unlock() }
@@ -187,12 +174,13 @@ struct ContentView: View {
         }
     }
 
-    // 底层 C 语言 ICMP Ping 实现
+    // 🚀 核心重构：防串线、带载荷的标准 Ping
     func nativeICMPPing(ip: String) -> Bool {
         let fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_ICMP)
         guard fd >= 0 else { return false }
         defer { close(fd) }
 
+        // 设置超时
         var tv = timeval(tv_sec: 1, tv_usec: 0)
         setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, socklen_t(MemoryLayout<timeval>.size))
 
@@ -201,27 +189,43 @@ struct ContentView: View {
         addr.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
         if inet_pton(AF_INET, ip, &addr.sin_addr) <= 0 { return false }
 
-        let packet: [UInt8] = [8, 0, 0, 0, 0, 0, 0, 0]
-
-        let sent = withUnsafePointer(to: &addr) {
+        // 🟢 关键改进 1：强行绑定套接字和目标 IP！
+        // 这样底层的 C 内核会帮我们过滤掉所有其他 IP 的回包，彻底解决高并发串线漏包问题
+        let connected = withUnsafePointer(to: &addr) {
             $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { ptr in
-                sendto(fd, packet, packet.count, 0, ptr, socklen_t(MemoryLayout<sockaddr_in>.size))
+                connect(fd, ptr, socklen_t(MemoryLayout<sockaddr_in>.size))
             }
         }
+        guard connected == 0 else { return false }
+
+        // 🟢 关键改进 2：伪造标准的 64 字节数据包 (8字节报头 + 56字节载荷)
+        // 避免防火墙拦截无特征的 8 字节空包
+        var packet = [UInt8](repeating: 97, count: 64) // 填充字母 'a' 作为 Payload
+        packet[0] = 8 // Type: Echo Request
+        packet[1] = 0 // Code
+        packet[2] = 0 // Checksum (内核代填)
+        packet[3] = 0
+        packet[4] = 0 // ID
+        packet[5] = 0
+        packet[6] = 0 // Sequence
+        packet[7] = 1 
+
+        // 绑定后可以直接用 send，无需 sendto
+        let sent = send(fd, packet, packet.count, 0)
         if sent <= 0 { return false }
 
-        var buffer = [UInt8](repeating: 0, count: 64)
-        var fromAddr = sockaddr_in()
-        var fromLen = socklen_t(MemoryLayout<sockaddr_in>.size)
-
-        let received = withUnsafeMutablePointer(to: &fromAddr) {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { ptr in
-                recvfrom(fd, &buffer, buffer.count, 0, ptr, &fromLen)
+        var buffer = [UInt8](repeating: 0, count: 128)
+        let startTime = Date()
+        
+        // 使用循环读取，只要在 1 秒内读到目标回包即判定在线
+        while Date().timeIntervalSince(startTime) < 1.0 {
+            let received = recv(fd, &buffer, buffer.count, 0)
+            if received >= 8 {
+                // 判断是否为 Echo Reply 回应包 (Type = 0)
+                if buffer[0] == 0 {
+                    return true
+                }
             }
-        }
-
-        if received >= 8 && buffer[0] == 0 {
-            return true
         }
         return false
     }
